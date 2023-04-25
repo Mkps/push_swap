@@ -6,7 +6,7 @@
 #    By: aloubier <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/24 12:58:01 by aloubier          #+#    #+#              #
-#    Updated: 2023/04/24 14:25:44 by aloubier         ###   ########.fr        #
+#    Updated: 2023/04/25 17:53:04 by aloubier         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,7 @@ $(NAME): $(OBJ)
 	$(CC) -c $(CFLAGS) $< -o $@
 
 clean:
-	rm -f $(OBJ) $(BONUS_OBJ)
+	rm -f $(OBJ) 
 
 fclean: clean
 	rm -f $(NAME)
