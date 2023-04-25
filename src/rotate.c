@@ -1,33 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_push_swap.h                                     :+:      :+:    :+:   */
+/*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aloubier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/24 13:08:27 by aloubier          #+#    #+#             */
-/*   Updated: 2023/04/24 14:16:31 by aloubier         ###   ########.fr       */
+/*   Created: 2023/04/24 14:09:24 by aloubier          #+#    #+#             */
+/*   Updated: 2023/04/24 14:43:56 by aloubier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PUSH_SWAP_H
-# define FT_PUSH_SWAP_H
+#include "ft_push_swap.h"
 
-# include <stdint.h>
-# include <stdlib.h>
-# include <unistd.h>
-# include <stdio.h>
-
-typedef struct s_list t_list;
-
-struct s_list
+void	rotate_single(t_list *stack, char id)
 {
-	t_list	*next;
-	int		value;
-};
-
-void	swap_elem(t_list *elem, char stack);
-void	swap_both(t_list *elem_a, t_list *elem_b);
-void	push_elem(t_list *pile_from, t_list *pile_to, char id);
-
-#endif
+	t_list tmp;
+	tmp = get_last_elem(stack);
+	while (stack->next != NULL)
+	{
+		stack = stack->next;
+		stack->next = stack->next->next;
+	}
+}

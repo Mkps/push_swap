@@ -6,7 +6,7 @@
 #    By: aloubier <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/24 12:58:01 by aloubier          #+#    #+#              #
-#    Updated: 2023/04/24 13:05:59 by aloubier         ###   ########.fr        #
+#    Updated: 2023/04/24 14:25:44 by aloubier         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = push_swap
 SRCDIR = ./src
 INCDIR = ./includes
 
-SRC = $(SRCDIR)/main.c
+SRC = $(SRCDIR)/main.c $(SRCDIR)/pushswap.c $(SRCDIR)/rotate.c
 OBJ = $(SRC:%.c= %.o)
 
 CC = gcc

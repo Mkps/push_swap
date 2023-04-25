@@ -6,7 +6,7 @@
 /*   By: aloubier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 12:52:54 by aloubier          #+#    #+#             */
-/*   Updated: 2023/04/24 13:11:50 by aloubier         ###   ########.fr       */
+/*   Updated: 2023/04/24 14:24:35 by aloubier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,12 @@
 
 int	main(void)
 {
-	write(1, "hello", 5);
+	t_list	*new;
+
+	new = malloc(sizeof (t_list));
+	new->next = 0;
+	new->value = 0;
+	swap_elem(new, 'a');
+	//write(1, "hello", 5);
 	return (0);
 }
