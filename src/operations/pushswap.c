@@ -15,9 +15,8 @@
 //swap the first two elements on the specified stack.
 void	swap_elem(t_list *elem, char stack)
 {
-	if (!elem)
+	if	(!elem)
 	{
-		printf("Invalid element provided to swap_elem, Stack swapped: %c", stack);
 		return ;
 	}
 	if (stack == 'a')
@@ -26,7 +25,6 @@ void	swap_elem(t_list *elem, char stack)
 		write(1, "sb", 2);
 	else
 	{
-		printf("invalid stack identifier provided to swap_elem, Stack swapped: %c", stack);
 		return ;
 	}
 }
@@ -45,5 +43,5 @@ void	swap_both(t_list *elem_a, t_list *elem_b)
 void	push_elem(t_list *pile_from, t_list *pile_to, char id)
 {
 	if (!pile_from || !pile_to)
-		printf("Invalid element provided to push_elem, Stack swapped: %c", id);
+		printf("Invalid element: %c", id);
 }

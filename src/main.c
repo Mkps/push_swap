@@ -12,11 +12,7 @@
 
 #include "ft_push_swap.h"
 
-<<<<<<< HEAD
-int	main(int argc,char **argv)
-=======
 int	main(int argc, char **argv)
->>>>>>> 17b16fc8c225969779cfac7896e5da0e0a268f45
 {
 	if (argc < 2)
 		return (0);
@@ -26,8 +22,6 @@ int	main(int argc, char **argv)
 	new->next = 0;
 	new->value = 0;
 	swap_elem(new, 'a');
-<<<<<<< HEAD
-	//write(1, "hello", 5);
 	if (argc >= 2)
 	{
 		if (parse_error(argv) == 0)
@@ -35,8 +29,6 @@ int	main(int argc, char **argv)
 		else
 			write(1, "KO", 2);
 	}
-=======
 	write(1, "hello", 5);
->>>>>>> 17b16fc8c225969779cfac7896e5da0e0a268f45
 	return (0);
 }
