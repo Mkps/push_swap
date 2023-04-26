@@ -6,7 +6,7 @@
 /*   By: aloubier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 14:56:13 by aloubier          #+#    #+#             */
-/*   Updated: 2022/11/28 17:32:25 by aloubier         ###   ########.fr       */
+/*   Updated: 2023/04/26 18:17:13 by aloubier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	ft_atoi(const char *str)
 		i++;
 	}
 	result = 0;
-	while (str[i] && ft_isdigit(str[i]))
+	while (str[i] && (str[i] >= '0' && str[i] <= '9'))
 	{
 		result *= 10;
 		result += str[i] - '0';

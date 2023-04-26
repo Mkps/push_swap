@@ -6,7 +6,7 @@
 /*   By: aloubier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 17:18:48 by aloubier          #+#    #+#             */
-/*   Updated: 2023/04/26 17:11:11 by aloubier         ###   ########.fr       */
+/*   Updated: 2023/04/26 18:27:21 by aloubier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 //Parse the provided string array for invalid characters
 
-int	parse_invalid(char **value)
+static int	parse_invalid(char **value)
 {
 	int	i;
 	int	j;
@@ -26,7 +26,7 @@ int	parse_invalid(char **value)
 		if (value[i][j] == '+' || value[i][j] == '-'
 				|| (value[i][j] >= '0' && value[i][j] <= '9'))
 			j++;
-		while (value[i][j] != NULL)
+		while (value[i][j] != 0)
 		{
 			if (value[i][j] < '0' || value[i][j] > '9')
 				return (1);
@@ -34,9 +34,10 @@ int	parse_invalid(char **value)
 		}
 		i++;
 	}
+	return (0);
 }
 
-int	parse_duplicate(char **value)
+static int	parse_duplicate(char **value)
 {
 	int		i;
 	int		j;
@@ -54,5 +55,14 @@ int	parse_duplicate(char **value)
 		}
 		i++;
 	}
+	return (0);
+}
+
+int	parse_error(char **value)
+{
+	if (parse_invalid(value) == 1)
+		return (1);
+	if (parse_duplicate(value) == 1)
+		return (1);
 	return (0);
 }

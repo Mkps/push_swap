@@ -22,6 +22,7 @@ void	rotate_single(t_list *stack, char id)
 		stack = stack->next;
 		stack->next = stack->next->next;
 	}
+	tmp->next = stack;
 	if (id == 'a')
 		write(1, "ra", 2);
 	else if (id == 'b')
