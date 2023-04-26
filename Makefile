@@ -14,7 +14,11 @@ NAME = push_swap
 SRCDIR = ./src
 INCDIR = ./includes
 
+<<<<<<< HEAD
 SRC = $(SRCDIR)/main.c $(SRCDIR)/pushswap.c $(SRCDIR)/rotate.c $(SRCDIR)/parsing.c
+=======
+SRC = $(SRCDIR)/main.c $(SRCDIR)/operations/pushswap.c $(SRCDIR)/operations/rotate.c $(SRCDIR)/utils/parsing.c $(SRCDIR)/utils/init.c
+>>>>>>> 17b16fc8c225969779cfac7896e5da0e0a268f45
 OBJ = $(SRC:%.c= %.o)
 
 CC = gcc
