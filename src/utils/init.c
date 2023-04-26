@@ -1,5 +1,6 @@
 #include "ft_push_swap.h"
 
+//Computes the number of elements in the stack.
 int	elem_number(int argc, char **argv)
 {
 	int	i;
@@ -22,33 +23,35 @@ int	elem_number(int argc, char **argv)
 	return (size);
 }
 
-t_list	**init_stack(t_list **root)
+//Returns the root of a stack
+t_list	**create_stack(void)
 {
 	t_list	**new;
+
+	new = malloc(sizeof(t_list*));
+	if(!new)
+		return(NULL);
+	return (new);
+}
+
+//Initialize stack a with the provided values. Returns 1 in case of error.
+int	init_stack(t_list **root, char	**value)
+{
+	t_list	*new;
 	t_list	*tmp;
 	int		i;
 
-	if (root == NULL)
+	i = 0;
+	while (args[i] != NULL)
 	{
-		new = (t_list**)malloc(sizeof(t_list**));
+		tmp = get_last_elem(root);
+		new = malloc(sizeof (t_list));
 		if (!new)
-			return (NULL);
-		else
-			return (new);
+			return (1);
+		new->next = NULL;
+		tmp->next = new;
+		new->value = ft_atoi(value[i]);
+		i++;
 	}
-	else
-	{
-		i = 0;
-		while (args[i] != NULL)
-		{
-			tmp = malloc(sizeof(t_list));
-			if (!tmp)
-				return (NULL);
-			tmp->next = NULL;
-			tmp->value = ft_atoi(args[i]);
-			ft_get_last_elem(root)->next = tmp;
-			i++;
-		}
-	}
-
+	return (0);
 }
