@@ -29,5 +29,6 @@ struct s_list
 void	swap_elem(t_list *elem, char stack);
 void	swap_both(t_list *elem_a, t_list *elem_b);
 void	push_elem(t_list *pile_from, t_list *pile_to, char id);
+int		elem_number(int argc, char **argv);
 
 #endif

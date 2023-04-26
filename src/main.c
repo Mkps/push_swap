@@ -12,14 +12,16 @@
 
 #include "ft_push_swap.h"
 
-int	main(void)
+int	main(int argc, char **argv)
 {
+	if (argc < 2)
+		return (0);
+	elem_number(argc, argv);
 	t_list	*new;
-
 	new = malloc(sizeof (t_list));
 	new->next = 0;
 	new->value = 0;
 	swap_elem(new, 'a');
-	//write(1, "hello", 5);
+	write(1, "hello", 5);
 	return (0);
 }

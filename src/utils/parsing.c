@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_pushswap.h"
+#include "ft_push_swap.h"
 
 int	is_duplicate(char **value)
 {
