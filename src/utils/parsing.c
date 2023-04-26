@@ -6,7 +6,7 @@
 /*   By: aloubier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 17:18:48 by aloubier          #+#    #+#             */
-/*   Updated: 2023/04/26 15:43:11 by aloubier         ###   ########.fr       */
+/*   Updated: 2023/04/26 15:53:54 by aloubier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	parse_invalid(char **value)
 	while (value[i] != NULL)
 	{
 		j = 0;
-		if (value[i][j] == '-' || (value[i][j] >= '0' && value[i][j] <= '9'))
+		if (value[i][j] == '+' || value[i][j] == '-' || (value[i][j] >= '0' && value[i][j] <= '9'))
 			j++;
 		while (value[i][j] != NULL)
 		{
