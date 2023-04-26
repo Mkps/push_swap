@@ -29,10 +29,12 @@ struct s_list
 void	swap_elem(t_list *elem, char stack);
 void	swap_both(t_list *elem_a, t_list *elem_b);
 void	push_elem(t_list *pile_from, t_list *pile_to, char id);
-<<<<<<< HEAD
 int		parse_error(char **value);
-=======
+int		init_stack(t_list **root, char	**value);
+t_list	**create_stack(void);
 int		elem_number(int argc, char **argv);
->>>>>>> 17b16fc8c225969779cfac7896e5da0e0a268f45
+void	output_move(char *mv);
+void	output_error(void);
+
 
 #endif

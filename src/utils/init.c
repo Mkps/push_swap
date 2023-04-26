@@ -42,7 +42,7 @@ int	init_stack(t_list **root, char	**value)
 	int		i;
 
 	i = 0;
-	while (args[i] != NULL)
+	while (value[i] != NULL)
 	{
 		tmp = get_last_elem(root);
 		new = malloc(sizeof (t_list));
