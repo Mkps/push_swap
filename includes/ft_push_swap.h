@@ -6,7 +6,7 @@
 /*   By: aloubier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 13:08:27 by aloubier          #+#    #+#             */
-/*   Updated: 2023/04/26 18:24:20 by aloubier         ###   ########.fr       */
+/*   Updated: 2023/04/26 19:18:41 by aloubier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ void	swap_both(t_list *elem_a, t_list *elem_b);
 void	push_elem(t_list *pile_from, t_list *pile_to, char id);
 /**		Utils	**/
 int		parse_error(char **value);
+char	**import_args(int size, char **argv);
 int		init_stack(t_list **root, char	**value);
 t_list	**create_stack(void);
 int		elem_number(int argc, char **argv);

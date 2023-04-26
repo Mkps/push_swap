@@ -6,7 +6,7 @@
 /*   By: aloubier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 12:52:54 by aloubier          #+#    #+#             */
-/*   Updated: 2023/04/24 14:24:35 by aloubier         ###   ########.fr       */
+/*   Updated: 2023/04/26 19:28:54 by aloubier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,18 @@
 
 int	main(int argc, char **argv)
 {
-	t_list	*new;
+	char	**tab;
 
 	if (argc < 2)
 		return (0);
-	elem_number(argc, argv);
-	new = malloc(sizeof (t_list));
-	new->next = 0;
-	new->value = 0;
-	swap_elem(new, 'a');
-	if (argc >= 2)
+	tab = import_args(argc, argv);
+	if (tab)
 	{
-		if (parse_error(argv) == 0)
+		if (parse_error(tab) == 0)
 			write(1, "OK", 2);
 		else
 			write(1, "KO", 2);
 	}
-	write(1, "hello", 5);
+	free(tab);
 	return (0);
 }
