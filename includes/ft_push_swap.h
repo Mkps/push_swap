@@ -6,7 +6,7 @@
 /*   By: aloubier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 13:08:27 by aloubier          #+#    #+#             */
-/*   Updated: 2023/04/24 14:16:31 by aloubier         ###   ########.fr       */
+/*   Updated: 2023/04/25 19:25:09 by aloubier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,6 @@ struct s_list
 void	swap_elem(t_list *elem, char stack);
 void	swap_both(t_list *elem_a, t_list *elem_b);
 void	push_elem(t_list *pile_from, t_list *pile_to, char id);
+int		parse_error(char **value);
 
 #endif

@@ -12,7 +12,7 @@
 
 #include "ft_push_swap.h"
 
-int	main(void)
+int	main(int argc,char **argv)
 {
 	t_list	*new;
 
@@ -21,5 +21,12 @@ int	main(void)
 	new->value = 0;
 	swap_elem(new, 'a');
 	//write(1, "hello", 5);
+	if (argc >= 2)
+	{
+		if (parse_error(argv) == 0)
+			write(1, "OK", 2);
+		else
+			write(1, "KO", 2);
+	}
 	return (0);
 }
