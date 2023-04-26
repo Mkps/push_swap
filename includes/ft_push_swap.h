@@ -6,7 +6,7 @@
 /*   By: aloubier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 13:08:27 by aloubier          #+#    #+#             */
-/*   Updated: 2023/04/25 19:25:09 by aloubier         ###   ########.fr       */
+/*   Updated: 2023/04/26 17:12:20 by aloubier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <unistd.h>
 # include <stdio.h>
 
-typedef struct s_list t_list;
+typedef struct s_list	t_list;
 
 struct s_list
 {
@@ -35,6 +35,5 @@ t_list	**create_stack(void);
 int		elem_number(int argc, char **argv);
 void	output_move(char *mv);
 void	output_error(void);
-
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: aloubier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 16:33:27 by aloubier          #+#    #+#             */
-/*   Updated: 2023/04/26 16:34:49 by aloubier         ###   ########.fr       */
+/*   Updated: 2023/04/26 17:15:17 by aloubier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,14 @@
 # include <unistd.h>
 # include <stdint.h>
 
-int	    ft_strcmp(char *s1, char *s2);
+int		ft_strcmp(char *s1, char *s2);
 char	**ft_split(char const *str, char c);
-int	    ft_lstsize(t_list *lst);
+int		ft_lstsize(t_list *lst);
 t_list	*ft_lstlast(t_list *lst);
 void	ft_lstdelone(t_list *lst, void (*del)(void*));
 void	ft_lstclear(t_list **lst, void (*del)(void*));
 void	ft_lstadd_front(t_list **lst, t_list *new);
 void	ft_lstadd_back(t_list **lst, t_list *new);
-int	    ft_atoi(const char *str);
+int		ft_atoi(const char *str);
 
 #endif

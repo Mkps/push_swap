@@ -6,16 +6,15 @@
 /*   By: aloubier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 13:17:00 by aloubier          #+#    #+#             */
-/*   Updated: 2023/04/24 14:10:33 by aloubier         ###   ########.fr       */
+/*   Updated: 2023/04/26 17:12:57 by aloubier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_push_swap.h"
 
-//swap the first two elements on the specified stack.
 void	swap_elem(t_list *elem, char stack)
 {
-	if	(!elem)
+	if (!elem)
 	{
 		return ;
 	}
@@ -29,7 +28,6 @@ void	swap_elem(t_list *elem, char stack)
 	}
 }
 
-//Swap both elements at the same time;
 void	swap_both(t_list *elem_a, t_list *elem_b)
 {
 	if (!elem_a || !elem_b)
@@ -39,7 +37,6 @@ void	swap_both(t_list *elem_a, t_list *elem_b)
 	write(1, "ss", 2);
 }
 
-//Push an element from a pile onto the other pile. Does nothing if pile_from is empty.
 void	push_elem(t_list *pile_from, t_list *pile_to, char id)
 {
 	if (!pile_from || !pile_to)

@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: aloubier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/26 16:50:30 by aloubier          #+#    #+#             */
-/*   Updated: 2023/04/26 16:50:33 by aloubier         ###   ########.fr       */
+/*   Created: 2023/04/26 16:59:13 by aloubier          #+#    #+#             */
+/*   Updated: 2023/04/26 17:00:00 by aloubier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	elem_number(int argc, char **argv)
 		}
 	}
 	else
-		size = argc - 1; 
+		size = argc - 1;
 	printf("size is %i", size);
 	return (size);
 }
@@ -40,9 +40,9 @@ t_list	**create_stack(void)
 {
 	t_list	**new;
 
-	new = malloc(sizeof(t_list*));
-	if(!new)
-		return(NULL);
+	new = malloc(sizeof (t_list *));
+	if (!new)
+		return (NULL);
 	return (new);
 }
 
@@ -56,7 +56,7 @@ int	init_stack(t_list **root, char	**value)
 	i = 0;
 	while (value[i] != NULL)
 	{
-		tmp = get_last_elem(root);
+		tmp = ft_lstlast(*root);
 		new = malloc(sizeof (t_list));
 		if (!new)
 			return (1);

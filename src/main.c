@@ -14,10 +14,11 @@
 
 int	main(int argc, char **argv)
 {
+	t_list	*new;
+
 	if (argc < 2)
 		return (0);
 	elem_number(argc, argv);
-	t_list	*new;
 	new = malloc(sizeof (t_list));
 	new->next = 0;
 	new->value = 0;

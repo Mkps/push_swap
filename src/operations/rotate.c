@@ -6,7 +6,7 @@
 /*   By: aloubier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 14:09:24 by aloubier          #+#    #+#             */
-/*   Updated: 2023/04/25 17:28:36 by aloubier         ###   ########.fr       */
+/*   Updated: 2023/04/26 17:14:18 by aloubier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 
 void	rotate_single(t_list *stack, char id)
 {
-//	t_list tmp;
-//	tmp = get_last_elem(stack);
+	t_list	*tmp;
+
+	tmp = ft_lstlast(stack);
 	while (stack->next != NULL)
 	{
 		stack = stack->next;
