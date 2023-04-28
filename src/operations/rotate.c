@@ -19,7 +19,7 @@ void	rotate_single(t_list **stack, char id)
 
 	last = ft_lstlast(*stack);
 	current = *stack;
-	if (current == last)
+	if (current == last || !*stack)
 		return ;
 	while (current->next->next)
 		current = current->next;

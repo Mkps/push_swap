@@ -34,7 +34,7 @@ int	main(int argc, char **argv)
 	}
 	init_stack(stack_a, stack_b, tab);
 	output_stack(stack_a);
-	rotate_single(stack_a, 'a');
+	rotate_single(stack_b, 'b');
 	output_stack(stack_a);
 	if (!exit_handler(argc, stack_a, stack_b, tab))
 		return (1);
