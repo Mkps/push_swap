@@ -20,7 +20,6 @@ void	ft_lstclear(t_list **lst)
 	{
 		current = *lst;
 		*lst = current->next;
-		write(1, "FREE\n", 5);
 		free(current);
 	}
 	*lst = NULL;

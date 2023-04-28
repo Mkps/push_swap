@@ -27,14 +27,12 @@ int	main(int argc, char **argv)
 	tab = import_args(argc, argv);
 	if (tab)
 	{
-		if (parse_error(tab) == 0)
-			write(1, "OK", 2);
-		else
-			write(1, "KO", 2);
+		parse_error(tab);
 	}
 	init_stack(stack_a, stack_b, tab);
 	output_stack(stack_a);
-	rotate_single(stack_b, 'b');
+	//rotate_single(stack_a, 'a');
+	swap_single(stack_a, 'a');
 	output_stack(stack_a);
 	if (!exit_handler(argc, stack_a, stack_b, tab))
 		return (1);

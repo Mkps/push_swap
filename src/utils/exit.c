@@ -30,9 +30,7 @@ static void	ft_tabclear(char **tab)
 int	exit_handler(int argc, t_list **stack_a, t_list **stack_b, char **tab)
 {
 	ft_lstclear(stack_a);
-	write(1, "a\n", 2);
 	ft_lstclear(stack_b);
-	write(1, "b\n", 2);
 	if (argc == 2)
 		ft_tabclear(tab);
 	else

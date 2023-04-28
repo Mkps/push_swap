@@ -40,9 +40,9 @@ void	ft_lstadd_back(t_list **lst, t_list *new);
 t_list	*ft_lstnew(int value);
 int		ft_atoi(const char *str);
 /**		Operations	**/
-void	swap_elem(t_list *elem, char stack);
-void	swap_both(t_list *elem_a, t_list *elem_b);
-void	push_elem(t_list *pile_from, t_list *pile_to, char id);
+void	swap_single(t_list **stack, char id);
+void	swap_both(t_list **stack_a, t_list **stack_b);
+void	push(t_list *pile_from, t_list *pile_to, char id);
 void	rotate_single(t_list **stack, char id);
 /**		Utils	**/
 int		elem_number(int argc, char **argv);

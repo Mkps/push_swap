@@ -12,28 +12,44 @@
 
 #include "ft_push_swap.h"
 
-void	swap_elem(t_list *elem, char stack)
+void	swap_single(t_list **stack, char id)
 {
-	if (!elem)
-	{
+	t_list	*next;
+	t_list	*current;
+	//t_list	tmp;
+	//int		value;
+
+	current = *stack;
+	next = current->next;
+
+	//tmp = current;
+	printf("current: %i\n next: %i\n", current->value, next->value);
+	if (current == next || !*stack)
 		return ;
-	}
-	if (stack == 'a')
-		write(1, "sa", 2);
-	else if (stack == 'b')
-		write(1, "sb", 2);
+
+	//value = current->value;
+	//current->value = next->value;
+	//next->value = value;
+	//tmp = *current;
+	current->next = next->next;
+	*current = *next;
+	next = *stack;
+	next->next = current;
+
+	//current->next = next->next;
+	//next->next = tmp;
+	printf("current: %i\n next: %i\n", current->value, next->value);
+
+	if (id == 'a')
+		output_move("sa");
 	else
-	{
-		return ;
-	}
+		output_move("sb");
 }
 
-void	swap_both(t_list *elem_a, t_list *elem_b)
+void	swap_both(t_list **stack_a, t_list **stack_b)
 {
-	if (!elem_a || !elem_b)
-		printf("Invalid element provided to swap_both.");
-	swap_elem(elem_a, 'a');
-	swap_elem(elem_b, 'b');
+	swap_single(stack_a, 'a');
+	swap_single(stack_b, 'b');
 	write(1, "ss", 2);
 }
 
