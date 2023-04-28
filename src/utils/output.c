@@ -12,16 +12,18 @@
 
 #include "ft_push_swap.h"
 
+/** Outputs "Error" followed by a nl */
 void	output_error(void)
 {
 	write(1, "Error\n", 6);
 }
 
+/** Outputs the values currently contained in the stack passed as argument*/
 void	output_stack(t_list **stack)
 {
 	t_list	*current;
 	t_list	*tmp;
-	
+
 	tmp = *stack;
 	if (*stack == NULL)
 		output_error();
@@ -33,7 +35,7 @@ void	output_stack(t_list **stack)
 	}
 }
 
-
+/** Outputs the move being done */
 void	output_move(char *mv)
 {
 	if (ft_strcmp(mv, "sa"))

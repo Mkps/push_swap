@@ -59,45 +59,51 @@ static int	parse_duplicate(char **value)
 	return (0);
 }
 
+/** Check if string will overflow an int type. Returns 1 if it does **/
+static int	is_overflow(char *value)
+{
+	int			i;
+	int			sign;
+	long long	nb;
+
+	i = 0;
+	while (value[i] && ((value[i] >= 9
+				&& value[i] <= 13) || value[i] == 32))
+		i++;
+	sign = 1;
+	if (value[i] == '+' || value[i] == '-')
+	{
+		if (value[i] == '-')
+			sign = -1;
+		i++;
+	}
+	nb = 0;
+	while (value[i] && (value[i] >= '0' && value[i] <= '9'))
+	{
+		nb *= 10;
+		nb += value[i] - '0';
+		i++;
+	}
+	nb *= sign;
+	return (nb > INT_MAX || nb < INT_MIN);
+}
+
 /** Parse the provided string array for overflowing arguments **/
 static int	parse_overflow(char **value)
 {
-	long long	result;
 	int			i;
-	int			j;
-	int			sign;
 
-	result = 0;
-	j = 0;
-	while(value[j] != NULL)
+	i = 0;
+	while (value[i] != NULL)
 	{
-
-		i = 0;
-		while (value[j][i] && ((value[j][i] >= 9 && value[j][i] <= 13) || value[j][i] == 32))
-			i++;
-		sign = 1;
-		if (value[j][i] == '+' || value[j][i] == '-')
-		{
-			if (value[j][i] == '-')
-				sign = -1;
-			i++;
-		}
-		result = 0;
-		while (value[j][i] && (value[j][i] >= '0' && value[j][i] <= '9'))
-		{
-			result *= 10;
-			result += value[j][i] - '0';
-			i++;
-		}
-		result *= sign;
-		if (result > INT_MAX || result < INT_MIN)
+		if (is_overflow(value[i]))
 			return (output_error(), 1);
 		else
-			j++;
+			i++;
 	}
 	return (0);
 }
-	
+
 /**	Handler for the parsing functions.	**/
 int	parse_error(char **value)
 {

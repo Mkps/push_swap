@@ -24,10 +24,9 @@ typedef struct s_list	t_list;
 
 struct s_list
 {
-	struct s_list	*next;
+	t_list	*next;
 	int		value;
 };
-
 
 /**		Libft functions	**/
 int		ft_strcmp(char *s1, char *s2);

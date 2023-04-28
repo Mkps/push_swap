@@ -59,7 +59,7 @@ char	**import_args(int argc, char **argv)
 		tab = ft_split(argv[1], ' ');
 	else
 	{
-		tab = malloc(sizeof (char*) * (size + 1));
+		tab = malloc(sizeof (char *) * (size + 1));
 		if (!tab)
 			return (NULL);
 		tab[size] = 0;
