@@ -6,7 +6,7 @@
 /*   By: aloubier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 13:08:27 by aloubier          #+#    #+#             */
-/*   Updated: 2023/04/26 19:18:41 by aloubier         ###   ########.fr       */
+/*   Updated: 2023/04/28 17:55:14 by aloubier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ typedef struct s_list	t_list;
 
 struct s_list
 {
-	t_list	*next;
+	struct s_list	*next;
 	int		value;
 };
 
@@ -38,18 +38,22 @@ void	ft_lstdelone(t_list *lst);
 void	ft_lstclear(t_list **lst);
 void	ft_lstadd_front(t_list **lst, t_list *new);
 void	ft_lstadd_back(t_list **lst, t_list *new);
+t_list	*ft_lstnew(int value);
 int		ft_atoi(const char *str);
 /**		Operations	**/
 void	swap_elem(t_list *elem, char stack);
 void	swap_both(t_list *elem_a, t_list *elem_b);
 void	push_elem(t_list *pile_from, t_list *pile_to, char id);
 /**		Utils	**/
+int		elem_number(int argc, char **argv);
 int		parse_error(char **value);
 char	**import_args(int size, char **argv);
-int		init_stack(t_list **root, char	**value);
-t_list	**create_stack(void);
-int		elem_number(int argc, char **argv);
+t_list	**create_stack(int size);
+int		init_stack(t_list **stack_a, t_list **stack_b, char	**tab);
+int		exit_handler(int argc, t_list **stack_a, t_list **stack_b, char **tab);
+/**		Utils/Display **/
 void	output_move(char *mv);
 void	output_error(void);
+void	output_stack(t_list **stack);
 
 #endif

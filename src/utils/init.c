@@ -6,7 +6,7 @@
 /*   By: aloubier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 16:59:13 by aloubier          #+#    #+#             */
-/*   Updated: 2023/04/26 19:28:27 by aloubier         ###   ########.fr       */
+/*   Updated: 2023/04/28 17:01:21 by aloubier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,14 +35,15 @@ int	elem_number(int argc, char **argv)
 }
 
 /** Returns the root of a stack **/
-t_list	**create_stack(void)
+t_list	**create_stack(int size)
 {
-	t_list	**new;
+	t_list	**stack;
 
-	new = malloc(sizeof (t_list *));
-	if (!new)
+	stack = malloc(sizeof (t_list *) * size);
+	if (!stack)
 		return (NULL);
-	return (new);
+	*stack = NULL;
+	return (stack);
 }
 
 /**	Import the args into a fresh tab **/
@@ -72,23 +73,18 @@ char	**import_args(int argc, char **argv)
 }
 
 /**	Initialize stack a with the provided values. Returns 1 in case of error. **/
-int	init_stack(t_list **root, char	**value)
+int	init_stack(t_list **stack_a, t_list **stack_b, char	**tab)
 {
 	t_list	*new;
-	t_list	*tmp;
 	int		i;
 
 	i = 0;
-	while (value[i] != NULL)
+	while (tab[i] != NULL)
 	{
-		tmp = ft_lstlast(*root);
-		new = malloc(sizeof (t_list));
-		if (!new)
-			return (1);
-		new->next = NULL;
-		tmp->next = new;
-		new->value = ft_atoi(value[i]);
+		new = ft_lstnew(ft_atoi(tab[i]));
+		ft_lstadd_back(stack_a, new);
 		i++;
 	}
+	*stack_b = NULL;
 	return (0);
 }
