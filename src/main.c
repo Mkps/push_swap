@@ -33,8 +33,9 @@ int	main(int argc, char **argv)
 			write(1, "KO", 2);
 	}
 	init_stack(stack_a, stack_b, tab);
-	if (is_sorted(stack_a) == 1)
-		output_stack(stack_a);
+	output_stack(stack_a);
+	rotate_single(stack_a, 'a');
+	output_stack(stack_a);
 	if (!exit_handler(argc, stack_a, stack_b, tab))
 		return (1);
 	return (0);

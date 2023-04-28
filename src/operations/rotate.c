@@ -12,17 +12,19 @@
 
 #include "ft_push_swap.h"
 
-void	rotate_single(t_list *stack, char id)
+void	rotate_single(t_list **stack, char id)
 {
-	t_list	*tmp;
+	t_list	*last;
+	t_list	*current;
 
-	tmp = ft_lstlast(stack);
-	while (stack->next != NULL)
-	{
-		stack = stack->next;
-		stack->next = stack->next->next;
-	}
-	tmp->next = stack;
+	last = ft_lstlast(*stack);
+	current = *stack;
+	if (current == last)
+		return ;
+	while (current->next->next)
+		current = current->next;
+	ft_lstadd_front(stack, last);
+	current->next = NULL;
 	if (id == 'a')
 		write(1, "ra", 2);
 	else if (id == 'b')
