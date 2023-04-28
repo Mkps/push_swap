@@ -6,7 +6,7 @@
 /*   By: aloubier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 12:52:54 by aloubier          #+#    #+#             */
-/*   Updated: 2023/04/28 17:54:58 by aloubier         ###   ########.fr       */
+/*   Updated: 2023/04/28 18:59:14 by aloubier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@ int	main(int argc, char **argv)
 			write(1, "KO", 2);
 	}
 	init_stack(stack_a, stack_b, tab);
-	output_stack(stack_a);
+	if (is_sorted(stack_a) == 1)
+		output_stack(stack_a);
 	if (!exit_handler(argc, stack_a, stack_b, tab))
 		return (1);
 	return (0);

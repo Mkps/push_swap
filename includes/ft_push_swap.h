@@ -6,7 +6,7 @@
 /*   By: aloubier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 13:08:27 by aloubier          #+#    #+#             */
-/*   Updated: 2023/04/28 17:55:14 by aloubier         ###   ########.fr       */
+/*   Updated: 2023/04/28 18:58:14 by aloubier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ char	**import_args(int size, char **argv);
 t_list	**create_stack(int size);
 int		init_stack(t_list **stack_a, t_list **stack_b, char	**tab);
 int		exit_handler(int argc, t_list **stack_a, t_list **stack_b, char **tab);
+int		is_sorted(t_list **stack);
 /**		Utils/Display **/
 void	output_move(char *mv);
 void	output_error(void);
