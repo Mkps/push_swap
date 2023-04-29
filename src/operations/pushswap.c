@@ -24,7 +24,6 @@ void	swap_single(t_list **stack, char id)
 	current->next = next->next;
 	next->next = current;
 	*stack = next;
-	write(1, &id, 1);
 	if (id == 'a')
 		output_move("sa");
 	else
@@ -35,11 +34,23 @@ void	swap_both(t_list **stack_a, t_list **stack_b)
 {
 	swap_single(stack_a, 'a');
 	swap_single(stack_b, 'b');
-	write(1, "ss", 2);
+	output_move("ss");
 }
 
-void	push_elem(t_list *pile_from, t_list *pile_to, char id)
+void	push(t_list **pile_from, t_list **pile_to, char id)
 {
-	if (!pile_from || !pile_to)
-		printf("Invalid element: %c", id);
+	t_list	*tmp;
+	t_list	*next;
+
+	tmp = *pile_from;
+	next = *pile_to;
+	if (!*pile_from)
+		return ;
+	*pile_from = tmp->next;
+	*pile_to = tmp;
+	tmp->next = next;
+	if (id == 'a')
+		output_move("pa");
+	else
+		output_move("pb");
 }
