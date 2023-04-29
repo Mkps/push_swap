@@ -39,25 +39,25 @@ void	output_stack(t_list **stack)
 /** Outputs the move being done */
 void	output_move(char *mv)
 {
-	if (ft_strcmp(mv, "sa"))
+	if (!ft_strcmp(mv, "sa"))
 		write(1, "sa", 2);
-	else if (ft_strcmp(mv, "sb"))
+	else if (!ft_strcmp(mv, "sb"))
 		write(1, "sb", 2);
-	else if (ft_strcmp(mv, "ra"))
+	else if (!ft_strcmp(mv, "pa"))
 		write(1, "pa", 2);
-	else if (ft_strcmp(mv, "rb"))
+	else if (!ft_strcmp(mv, "pb"))
 		write(1, "pb", 2);
-	else if (ft_strcmp(mv, "ra"))
+	else if (!ft_strcmp(mv, "ra"))
 		write(1, "ra", 2);
-	else if (ft_strcmp(mv, "rb"))
+	else if (!ft_strcmp(mv, "rb"))
 		write(1, "rb", 2);
-	else if (ft_strcmp(mv, "rr"))
+	else if (!ft_strcmp(mv, "rr"))
 		write(1, "rr", 2);
-	else if (ft_strcmp(mv, "rra"))
+	else if (!ft_strcmp(mv, "rra"))
 		write(1, "rra", 3);
-	else if (ft_strcmp(mv, "rrb"))
+	else if (!ft_strcmp(mv, "rrb"))
 		write(1, "rrb", 3);
-	else if (ft_strcmp(mv, "rrr"))
+	else if (!ft_strcmp(mv, "rrr"))
 		write(1, "rrr", 3);
 	else
 		output_error();

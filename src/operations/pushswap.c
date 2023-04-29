@@ -24,6 +24,7 @@ void	swap_single(t_list **stack, char id)
 	current->next = next->next;
 	next->next = current;
 	*stack = next;
+	write(1, &id, 1);
 	if (id == 'a')
 		output_move("sa");
 	else
