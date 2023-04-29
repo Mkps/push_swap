@@ -16,30 +16,14 @@ void	swap_single(t_list **stack, char id)
 {
 	t_list	*next;
 	t_list	*current;
-	//t_list	tmp;
-	//int		value;
 
 	current = *stack;
-	next = current->next;
-
-	//tmp = current;
-	printf("current: %i\n next: %i\n", current->value, next->value);
-	if (current == next || !*stack)
+	if (current->next == NULL || !*stack)
 		return ;
-
-	//value = current->value;
-	//current->value = next->value;
-	//next->value = value;
-	//tmp = *current;
+	next = current->next;
 	current->next = next->next;
-	*current = *next;
-	next = *stack;
 	next->next = current;
-
-	//current->next = next->next;
-	//next->next = tmp;
-	printf("current: %i\n next: %i\n", current->value, next->value);
-
+	*stack = next;
 	if (id == 'a')
 		output_move("sa");
 	else
