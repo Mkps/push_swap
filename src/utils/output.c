@@ -25,8 +25,9 @@ void	output_stack(t_list **stack)
 	t_list	*tmp;
 
 	tmp = *stack;
+	write(1, "\n", 1);
 	if (*stack == NULL)
-		output_error();
+		write(1, "Empty\n", 6);
 	while (tmp)
 	{
 		current = tmp;
