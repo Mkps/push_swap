@@ -26,7 +26,14 @@ void	rotate_single(t_list **stack, char id)
 	ft_lstadd_front(stack, last);
 	current->next = NULL;
 	if (id == 'a')
-		write(1, "ra", 2);
+		output_move("ra");
 	else if (id == 'b')
-		write(1, "rb", 2);
+		output_move("rb");
+}
+
+void	rotate_both(t_list **stack_a, t_list **stack_b)
+{
+	rotate_single(stack_a, 'r');
+	rotate_single(stack_b, 'r');
+	output_move("rr");
 }
