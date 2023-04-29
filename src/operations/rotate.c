@@ -37,3 +37,26 @@ void	rotate_both(t_list **stack_a, t_list **stack_b)
 	rotate_single(stack_b, 'r');
 	output_move("rr");
 }
+
+void	rrotate_single(t_list **stack, char id)
+{
+	t_list	*current;
+
+	current = *stack;
+	if (current->next == NULL || !*stack)
+		return ;
+	ft_lstadd_back(stack, current);
+	*stack = current->next;
+	current->next = NULL;
+	if (id == 'a')
+		output_move("rra");
+	else if (id == 'b')
+		output_move("rrb");
+}
+
+void	rrotate_both(t_list **stack_a, t_list **stack_b)
+{
+	rrotate_single(stack_a, 'r');
+	rrotate_single(stack_b, 'r');
+	output_move("rrr");
+}

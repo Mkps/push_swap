@@ -36,7 +36,7 @@ int	main(int argc, char **argv)
 	//swap_single(stack_a, 'a');
 	push(stack_a, stack_b, 'a');
 	push(stack_a, stack_b, 'a');
-	//rotate_both(stack_a, stack_b);
+	rrotate_both(stack_a, stack_b);
 	output_stack(stack_a);
 	output_stack(stack_b);
 	if (!exit_handler(argc, stack_a, stack_b, tab))
