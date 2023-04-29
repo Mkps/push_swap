@@ -56,6 +56,8 @@ void	rrotate_single(t_list **stack, char id)
 
 void	rrotate_both(t_list **stack_a, t_list **stack_b)
 {
+	if (!*stack_a || !*stack_b)
+		return ;
 	rrotate_single(stack_a, 'r');
 	rrotate_single(stack_b, 'r');
 	output_move("rrr");
