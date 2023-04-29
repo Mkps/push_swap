@@ -44,7 +44,7 @@ void	push(t_list **pile_from, t_list **pile_to, char id)
 
 	tmp = *pile_from;
 	next = *pile_to;
-	if (tmp->next == NULL)
+	if (tmp == NULL)
 		return ;
 	*pile_from = tmp->next;
 	*pile_to = tmp;

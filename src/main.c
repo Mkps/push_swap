@@ -20,25 +20,28 @@ int	main(int argc, char **argv)
 	t_list	**stack_b;
 
 	size = elem_number(argc, argv);
-	stack_a = create_stack(size);
-	stack_b = create_stack(size);
 	if (argc < 2)
 		return (0);
+	stack_a = create_stack(size);
+	stack_b = create_stack(size);
 	tab = import_args(argc, argv);
-	if (tab)
+	if (parse_error(tab))
 	{
-		parse_error(tab);
+		exit_handler(argc, stack_a, stack_b, tab);
+		return (1);
 	}
 	init_stack(stack_a, stack_b, tab);
 	output_stack(stack_a);
 	output_stack(stack_b);
+	printf("\n");
 	//rotate_single(stack_a, 'a');
 	//swap_single(stack_a, 'a');
 	push(stack_a, stack_b, 'a');
 	push(stack_a, stack_b, 'a');
-	rrotate_both(stack_a, stack_b);
+	//rrotate_both(stack_a, stack_b);
 	output_stack(stack_a);
 	output_stack(stack_b);
+	printf("\n");
 	if (!exit_handler(argc, stack_a, stack_b, tab))
 		return (1);
 	return (0);
