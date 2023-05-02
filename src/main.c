@@ -34,6 +34,8 @@ int	main(int argc, char **argv)
 	output_stack(stack_a);
 	output_stack(stack_b);
 	printf("\n");
+	if (is_sorted(stack_a))
+		return (exit_handler(argc, stack_a, stack_b, tab));
 	//rotate_single(stack_a, 'a');
 	//swap_single(stack_a, 'a');
 	// push(stack_a, stack_b, 'a');

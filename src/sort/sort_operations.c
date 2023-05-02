@@ -10,7 +10,7 @@ void    divide_stack(t_list **stack_a, t_list **stack_b)
 	median = find_median(stack_a);
 	nb = ft_lstsize(stack_a);
 	nb /= 2;
-	nb++;
+	printf("DEBUG cv %i md %i", current->value, median);
     while (nb)
     {
 		if(current->value < median)

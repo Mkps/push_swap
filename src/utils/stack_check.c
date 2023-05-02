@@ -54,7 +54,7 @@ int	find_median(t_list **stack)
 		i++;
 	}
 	i = 0;
-	while (i + 1 < nb)
+	while (i < nb)
 	{
 		if (tab[i] > tab[i + 1])
 		{
