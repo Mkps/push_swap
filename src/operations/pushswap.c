@@ -50,7 +50,7 @@ void	push(t_list **pile_from, t_list **pile_to, char id)
 	*pile_to = tmp;
 	tmp->next = next;
 	if (id == 'a')
-		output_move("pa");
-	else
 		output_move("pb");
+	else
+		output_move("pa");
 }
