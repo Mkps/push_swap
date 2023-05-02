@@ -65,7 +65,7 @@ int		cost_compute_a(t_list **stack, int value);
 /**		Sorting	functions	**/
 void    divide_stack(t_list **stack_a, t_list **stack_b);
 void	basic_stack_sort(t_list **stack, char id);
-void	basic_stack_sort_d(t_list **stack, char id);
+void	basic_stack_sort_d(t_list **stack_a, t_list **stack_b);
 /**		Utils/Display **/
 void	output_move(char *mv);
 void	output_error(void);

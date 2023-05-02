@@ -43,12 +43,12 @@ int	main(int argc, char **argv)
 	//rrotate_both(stack_a, stack_b);
 	divide_stack(stack_a, stack_b);
 	basic_stack_sort(stack_a, 'a');
-	basic_stack_sort_d(stack_b, 'b');
-	while (*stack_b != NULL)
-		push(stack_b, stack_a, 'b');
-	output_stack(stack_a);
-	output_stack(stack_b);
-	printf("\n");
+	basic_stack_sort_d(stack_a, stack_b);
+	// while (*stack_b != NULL)
+	// 	push(stack_b, stack_a, 'b');
+	// output_stack(stack_a);
+	// output_stack(stack_b);
+	// printf("\n");
 	if (!exit_handler(argc, stack_a, stack_b, tab))
 		return (1);
 	return (0);

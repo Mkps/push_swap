@@ -11,7 +11,7 @@ void    divide_stack(t_list **stack_a, t_list **stack_b)
 	nb = ft_lstsize(stack_a);
 	if (nb % 2 == 0)
 		median++;
-	printf("DEBUG cv %i md %i\n", current->value, median);
+	// printf("DEBUG cv %i md %i\n", current->value, median);
     while (ft_lstsize(stack_a) > 3)
     {
 		if(current->value <= median)
@@ -66,25 +66,26 @@ void	basic_stack_sort(t_list **stack, char id)
 	}
 }
 
-void	basic_stack_sort_d(t_list **stack, char id)
+void	basic_stack_sort_d(t_list **stack_a, t_list **stack_b)
 {
 	t_list	*l1;
-	t_list	*l2;
-	int		min;
 	
-	min = find_min(stack);
-	l1 = *stack;
-	l2 = *stack + 1;
-	while (!is_sorted_d(stack))
+	l1 = *stack_b;
+	while (l1 != NULL)
 	{
-		if ((l1->value < l2->value) && l1->value != min)
-			swap_single(stack, id);
+		if (l1->value == find_max(stack_b))
+			push(stack_b, stack_a, 'b');
 		else
-			rotate_single(stack, id);
-		l1 = *stack;
-		l2 = l1->next;
-	// output_stack(stack);
-	// printf("DEBUG l1 %i l2 %i last %i\n", l1->value, l2->value, last->value);
+		{
+			if (cost_compute_a(stack_b, find_max(stack_b)) >= cost_compute_d(stack_b, find_max(stack_b)))
+				rotate_single(stack_b, 'b');
+			else
+				rrotate_single(stack_b, 'b');
+		}
+		l1 = *stack_b;
+	// output_stack(stack_a);
+	// output_stack(stack_b);
+	// printf("DEBUG l1 %i max %i\n", l1->value, find_max(stack_b));
 	}
 }
 
