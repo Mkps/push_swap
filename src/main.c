@@ -36,9 +36,10 @@ int	main(int argc, char **argv)
 	printf("\n");
 	//rotate_single(stack_a, 'a');
 	//swap_single(stack_a, 'a');
-	push(stack_a, stack_b, 'a');
-	push(stack_a, stack_b, 'a');
+	// push(stack_a, stack_b, 'a');
+	// push(stack_a, stack_b, 'a');
 	//rrotate_both(stack_a, stack_b);
+	divide_stack(stack_a, stack_b);
 	output_stack(stack_a);
 	output_stack(stack_b);
 	printf("\n");

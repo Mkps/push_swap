@@ -31,7 +31,7 @@ struct s_list
 /**		Libft functions	**/
 int		ft_strcmp(char *s1, char *s2);
 char	**ft_split(char const *str, char c);
-int		ft_lstsize(t_list *lst);
+int		ft_lstsize(t_list **lst);
 t_list	*ft_lstlast(t_list *lst);
 void	ft_lstdelone(t_list *lst);
 void	ft_lstclear(t_list **lst);
@@ -40,7 +40,7 @@ void	ft_lstadd_back(t_list **lst, t_list *new);
 t_list	*ft_lstnew(int value);
 int		ft_atoi(const char *str);
 /**		Operations	**/
-void	swap_single(t_list **stack, char id);
+void	swap_single(t_list **stack, char id);	
 void	swap_both(t_list **stack_a, t_list **stack_b);
 void	push(t_list **pile_from, t_list **pile_to, char id);
 void	rotate_single(t_list **stack, char id);
@@ -51,10 +51,13 @@ void	rrotate_both(t_list **stack_a, t_list **stack_b);
 int		elem_number(int argc, char **argv);
 int		parse_error(char **value);
 char	**import_args(int size, char **argv);
-t_list	**create_stack(int size);
+t_list	**create_stack(int size); 
 int		init_stack(t_list **stack_a, t_list **stack_b, char	**tab);
 int		exit_handler(int argc, t_list **stack_a, t_list **stack_b, char **tab);
 int		is_sorted(t_list **stack);
+int		find_median(t_list **stack);
+/**		Sorting	functions	**/
+void    divide_stack(t_list **stack_a, t_list **stack_b);
 /**		Utils/Display **/
 void	output_move(char *mv);
 void	output_error(void);

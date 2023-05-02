@@ -32,3 +32,40 @@ int	is_sorted(t_list	**stack)
 	}
 	return (1);
 }
+
+int	find_median(t_list **stack)
+{
+	int		nb;
+	int		tmp;
+	int		i;
+	int		*tab;
+	t_list	*current;
+
+	nb = ft_lstsize(stack);
+	tab = malloc(nb * sizeof (int));
+	if (!tab)
+		return (0);
+	current = *stack;
+	i = 0;
+	while (current != NULL)
+	{
+		tab[i] = current->value;
+		current = current->next;
+		i++;
+	}
+	i = 0;
+	while (i + 1 < nb)
+	{
+		if (tab[i] > tab[i + 1])
+		{
+			tmp = tab[i];
+			tab[i] = tab[i + 1];
+			tab[i + 1] = tmp;
+			i = 0;
+		}
+		i++;
+	}
+	tmp = tab[(nb + 1) / 2];
+	free(tab);
+	return tmp;
+}
