@@ -55,9 +55,12 @@ t_list	**create_stack(int size);
 int		init_stack(t_list **stack_a, t_list **stack_b, char	**tab);
 int		exit_handler(int argc, t_list **stack_a, t_list **stack_b, char **tab);
 int		is_sorted(t_list **stack);
+int		is_sorted_d(t_list **stack);
 int		find_median(t_list **stack);
 /**		Sorting	functions	**/
 void    divide_stack(t_list **stack_a, t_list **stack_b);
+void	basic_stack_sort(t_list **stack, char id);
+void	basic_stack_sort_d(t_list **stack, char id);
 /**		Utils/Display **/
 void	output_move(char *mv);
 void	output_error(void);

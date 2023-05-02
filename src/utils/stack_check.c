@@ -33,6 +33,26 @@ int	is_sorted(t_list	**stack)
 	return (1);
 }
 
+int	is_sorted_d(t_list	**stack)
+{
+	t_list	*tmp;
+	t_list	*current;
+
+	tmp = *stack;
+	while (tmp->next != NULL)
+	{
+		current = tmp;
+		while (current->next != NULL)
+		{
+			current = current->next;
+			if (tmp->value < current->value)
+				return (0);
+		}
+		tmp = tmp->next;
+	}
+	return (1);
+}
+
 int	find_median(t_list **stack)
 {
 	int		nb;
@@ -65,7 +85,9 @@ int	find_median(t_list **stack)
 		}
 		i++;
 	}
-	tmp = tab[(nb + 1) / 2];
+	if (nb % 2 == 1)
+		nb++;
+	tmp = tab[nb / 2];
 	free(tab);
 	return tmp;
 }
