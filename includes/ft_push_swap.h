@@ -57,6 +57,11 @@ int		exit_handler(int argc, t_list **stack_a, t_list **stack_b, char **tab);
 int		is_sorted(t_list **stack);
 int		is_sorted_d(t_list **stack);
 int		find_median(t_list **stack);
+int		find_min(t_list **stack);
+int		find_max(t_list **stack);
+int		cost_compute_d(t_list **stack, int value);
+int		cost_compute_a(t_list **stack, int value);
+
 /**		Sorting	functions	**/
 void    divide_stack(t_list **stack_a, t_list **stack_b);
 void	basic_stack_sort(t_list **stack, char id);

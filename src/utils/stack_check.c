@@ -91,3 +91,75 @@ int	find_median(t_list **stack)
 	free(tab);
 	return tmp;
 }
+
+int	find_min(t_list **stack)
+{
+	t_list *current;
+	int		min;
+
+	current = *stack;
+	min = current->value;
+	while (current != NULL)
+	{
+		if (current->value < min)
+			min = current->value;
+		current = current->next;
+	}
+	return (min);
+}
+
+int	find_max(t_list **stack)
+{
+	t_list *current;
+	int		max;
+
+	current = *stack;
+	max = current->value;
+	while (current != NULL)
+	{
+		if (current->value > max)
+			max = current->value;
+		current = current->next;
+	}
+	return (max);
+}
+
+/** Finds the lowest cost to get the value onto the top of the stack from r. */
+int	cost_compute_d(t_list **stack, int value)
+{
+	t_list	*current;
+	int		cost_d;
+	int		i;
+
+	current = *stack;
+	cost_d = 0;
+	i = 0;
+	while (current && cost_d == 0)
+	{
+		i++;
+		if (current->value <= value)
+			cost_d = i;
+		current = current->next;
+	}
+	return (cost_d);
+}
+
+/** Finds the lowest cost to get the value onto the top of the stack from rr. */
+int	cost_compute_a(t_list **stack, int value)
+{
+	t_list	*current;
+	int		cost_a;
+	int		i;
+
+	current = *stack;
+	cost_a = 0;
+	i = 0;
+	while (current && cost_a == 0)
+	{
+		i++;
+		if (current->value <= value)
+			cost_a = i;
+		current = current->next;
+	}
+	return (cost_a);
+}
