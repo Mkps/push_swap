@@ -33,14 +33,10 @@ int	main(int argc, char **argv)
 	init_stack(stack_a, stack_b, tab);
 	// output_stack(stack_a);
 	// output_stack(stack_b);
-	printf("\n");
+	// printf("\n");
 	if (is_sorted(stack_a))
 		return (exit_handler(argc, stack_a, stack_b, tab));
-	//rotate_single(stack_a, 'a');
-	//swap_single(stack_a, 'a');
-	// push(stack_a, stack_b, 'a');
-	// push(stack_a, stack_b, 'a');
-	//rrotate_both(stack_a, stack_b);
+
 	divide_stack(stack_a, stack_b);
 	basic_stack_sort(stack_a, 'a');
 	basic_stack_sort_d(stack_a, stack_b);

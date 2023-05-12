@@ -12,7 +12,7 @@
 
 #include "ft_push_swap.h"
 
-void	rotate_single(t_list **stack, char id)
+void	rrotate_single(t_list **stack, char id)
 {
 	t_list	*last;
 	t_list	*current;
@@ -26,19 +26,19 @@ void	rotate_single(t_list **stack, char id)
 	ft_lstadd_front(stack, last);
 	current->next = NULL;
 	if (id == 'a')
-		output_move("ra");
+		output_move("rra");
 	else if (id == 'b')
-		output_move("rb");
+		output_move("rrb");
 }
 
-void	rotate_both(t_list **stack_a, t_list **stack_b)
+void	rrotate_both(t_list **stack_a, t_list **stack_b)
 {
-	rotate_single(stack_a, 'r');
-	rotate_single(stack_b, 'r');
+	rotate_single(stack_a, 'a');
+	rotate_single(stack_b, 'b');
 	output_move("rr");
 }
 
-void	rrotate_single(t_list **stack, char id)
+void	rotate_single(t_list **stack, char id)
 {
 	t_list	*current;
 
@@ -49,16 +49,16 @@ void	rrotate_single(t_list **stack, char id)
 	*stack = current->next;
 	current->next = NULL;
 	if (id == 'a')
-		output_move("rra");
+		output_move("ra");
 	else if (id == 'b')
-		output_move("rrb");
+		output_move("rb");
 }
 
-void	rrotate_both(t_list **stack_a, t_list **stack_b)
+void	rotate_both(t_list **stack_a, t_list **stack_b)
 {
 	if (!*stack_a || !*stack_b)
 		return ;
-	rrotate_single(stack_a, 'r');
-	rrotate_single(stack_b, 'r');
-	output_move("rrr");
+	rrotate_single(stack_a, 'a');
+	rrotate_single(stack_b, 'b');
+	output_move("rr");
 }
