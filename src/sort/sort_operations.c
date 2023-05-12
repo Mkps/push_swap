@@ -49,22 +49,24 @@ void    divide_stack(t_list **stack_a, t_list **stack_b)
 void	basic_stack_sort(t_list **stack, char id)
 {
 	t_list	*l1;
-	t_list	*l2;
+	t_list	*last;
 	int		i;
 	int		max;
 	
 	l1 = *stack;
-	l2 = *stack + 1;
+	last = ft_lstlast(*stack);
 	i = 0;
 	max = find_max(stack);
 	while (!is_sorted(stack))
 	{
-		if ((l1->value > l2->value) && l1->value != max)
+		if ((l1->value > l1->next->value) && l1->value != max)
 			swap_single(stack, id);
+		else if ((l1->value < l1->next->value) && l1->value > last->value)
+			rrotate_single(stack, id);
 		else
 			rotate_single(stack, id);
 		l1 = *stack;
-		l2 = l1->next;
+		last = ft_lstlast(*stack);
 		i++;
 		// output_stack(stack);
 		// printf("\nDEBUG iteration %i\n", i);
