@@ -59,8 +59,9 @@ int		is_sorted_d(t_list **stack);
 int		find_median(t_list **stack);
 int		find_min(t_list **stack);
 int		find_max(t_list **stack);
-int		cost_compute_d(t_list **stack, int value);
-int		cost_compute_a(t_list **stack, int value);
+int		cost_compute_d(t_list **stack, int value, char mode);
+int		cost_compute_a(t_list **stack, int value, char mode);
+int		double_rotation_evaluation(t_list **stack_a, t_list **stack_b);
 
 /**		Sorting	functions	**/
 void    divide_stack(t_list **stack_a, t_list **stack_b);

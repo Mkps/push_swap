@@ -33,8 +33,8 @@ void	rrotate_single(t_list **stack, char id)
 
 void	rrotate_both(t_list **stack_a, t_list **stack_b)
 {
-	rotate_single(stack_a, 'a');
-	rotate_single(stack_b, 'b');
+	rrotate_single(stack_a, 'r');
+	rrotate_single(stack_b, 'r');
 	output_move("rr");
 }
 
@@ -58,7 +58,7 @@ void	rotate_both(t_list **stack_a, t_list **stack_b)
 {
 	if (!*stack_a || !*stack_b)
 		return ;
-	rrotate_single(stack_a, 'a');
-	rrotate_single(stack_b, 'b');
+	rotate_single(stack_a, 'r');
+	rotate_single(stack_b, 'r');
 	output_move("rr");
 }

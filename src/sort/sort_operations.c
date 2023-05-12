@@ -14,23 +14,29 @@ void    divide_stack(t_list **stack_a, t_list **stack_b)
 	// printf("DEBUG cv %i md %i\n", current->value, median);
     while (ft_lstsize(stack_a) > 3)
     {
-		if(current->value < median)
+		if(current->value <= median)
 		{
 			push(stack_a, stack_b, 'a');
 			if (median <= find_min(stack_a))
 			{
 				median = find_median(stack_a);
-				nb = ft_lstsize(stack_a) / 2;
+				nb = ft_lstsize(stack_a) / 4;
 				if (nb % 2 == 0)
 					median++;
 			}
 		}
 		else
 		{
-			if (cost_compute_a(stack_a, median) < cost_compute_d(stack_a, median))
-				rrotate_single(stack_a, 'a');
+			// printf("Debug cost med = %i a = %i cost b = %i", find_median(stack_b), cost_compute_a(stack_a, find_median(stack_a), 'v'), cost_compute_d(stack_a, find_median(stack_a), 'v'));
+			if (cost_compute_a(stack_a, median, 'v') > cost_compute_d(stack_a, median, 'v'))
+			{
+				if (double_rotation_evaluation(stack_a, stack_b) == 1)
+					rotate_both(stack_a, stack_b);
+				else
+					rotate_single(stack_a, 'a');
+			}
 			else
-				rotate_single(stack_a, 'a');
+				rrotate_single(stack_a, 'a');
 		}
 		current = *stack_a;
 		// output_stack(stack_a);
@@ -76,11 +82,14 @@ void	basic_stack_sort_d(t_list **stack_a, t_list **stack_b)
 			push(stack_b, stack_a, 'b');
 		else
 		{
-			if (cost_compute_a(stack_b, find_max(stack_b)) >= cost_compute_d(stack_b, find_max(stack_b)))
+			// printf("Debug cost max = %i a = %i cost b = %i", find_max(stack_b), cost_compute_a(stack_b, find_max(stack_b), 'm'), cost_compute_d(stack_b, find_max(stack_b), 'm'));
+			if (cost_compute_a(stack_b, find_max(stack_b), 'm') >= cost_compute_d(stack_b, find_max(stack_b), 'm'))
 				rotate_single(stack_b, 'b');
 			else
 				rrotate_single(stack_b, 'b');
 		}
+		if (!is_sorted(stack_a))
+			basic_stack_sort(stack_a, 'a');
 		l1 = *stack_b;
 	// output_stack(stack_a);
 	// output_stack(stack_b);
@@ -88,3 +97,21 @@ void	basic_stack_sort_d(t_list **stack_a, t_list **stack_b)
 	}
 }
 
+/** Returns 1 if using a double would be useful */
+int	double_rotation_evaluation(t_list **stack_a, t_list **stack_b)
+{
+	t_list	*first;
+	t_list	*last;
+	t_list	*current;
+
+	first = *stack_b;
+	last = ft_lstlast(*stack_b);
+	current = *stack_a;
+	if (current == NULL || first == NULL || first->next == NULL)
+		return (0);
+	// printf("DEBUG first %i last %i\n", first->value, last->value);
+	if (first->value < first->next->value && first->value < last->value)
+		return (1);
+	else
+		return (0);
+}

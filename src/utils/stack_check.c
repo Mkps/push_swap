@@ -85,9 +85,12 @@ int	find_median(t_list **stack)
 		}
 		i++;
 	}
-	if (nb % 2 == 1)
+	while (nb % 5 != 0)
 		nb++;
-	tmp = tab[nb / 2];
+	if (nb == 5)
+		tmp = tab[0];
+	else
+		tmp = tab[nb / 5];
 	free(tab);
 	return tmp;
 }
@@ -125,41 +128,46 @@ int	find_max(t_list **stack)
 }
 
 /** Finds the lowest cost to get the value onto the top of the stack from r. */
-int	cost_compute_d(t_list **stack, int value)
+int	cost_compute_d(t_list **stack, int value, char mode)
 {
 	t_list	*current;
-	int		cost_d;
 	int		i;
 
 	current = *stack;
-	cost_d = 0;
 	i = 0;
-	while (current && cost_d == 0)
+	while (current)
 	{
 		i++;
-		if (current->value <= value)
-			cost_d = i;
+		if (current->value <= value && mode == 'v')
+			return (i);
+		if (current->value == value && mode == 'm')
+			return (i);
 		current = current->next;
 	}
-	return (cost_d);
+	return (i);
 }
 
 /** Finds the lowest cost to get the value onto the top of the stack from rr. */
-int	cost_compute_a(t_list **stack, int value)
+int	cost_compute_a(t_list **stack, int value, char mode)
 {
 	t_list	*current;
-	int		cost_a;
 	int		i;
+	int		last_index;
+	int		size;
 
 	current = *stack;
-	cost_a = 0;
+	size = ft_lstsize(stack);
+	size++;
+	last_index = 0;
 	i = 0;
-	while (current && cost_a == 0)
+	while (current)
 	{
 		i++;
-		if (current->value <= value)
-			cost_a = i;
+		if (current->value <= value && mode == 'v')
+			last_index = i;
+		if (current->value == value && mode == 'm')
+			return (size - i);
 		current = current->next;
 	}
-	return (cost_a);
+	return (size - last_index);
 }
