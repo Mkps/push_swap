@@ -37,5 +37,5 @@ int	exit_handler(int argc, t_list **stack_a, t_list **stack_b, char **tab)
 		free(tab);
 	free(stack_a);
 	free(stack_b);
-	return (0);
+	return (1);
 }
