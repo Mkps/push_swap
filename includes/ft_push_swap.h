@@ -63,6 +63,7 @@ int		cost_compute_d(t_list **stack, int value, char mode);
 int		cost_compute_a(t_list **stack, int value, char mode);
 int		double_rotation_evaluation(t_list **stack_a, t_list **stack_b);
 /**		Sorting	functions	**/
+void	sort_main(t_list **stack_a, t_list **stack_b);
 void    divide_stack(t_list **stack_a, t_list **stack_b);
 void	basic_stack_sort(t_list **stack, char id);
 void	basic_stack_sort_d(t_list **stack_a, t_list **stack_b);

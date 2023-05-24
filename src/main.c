@@ -30,9 +30,7 @@ int	main(int argc, char **argv)
 	init_stack(stack_a, stack_b, tab);
 	if (is_sorted(stack_a))
 		return (exit_handler(argc, stack_a, stack_b, tab));
-	divide_stack(stack_a, stack_b);
-	basic_stack_sort(stack_a, 'a');
-	basic_stack_sort_d(stack_a, stack_b);
+	sort_main(stack_a, stack_b);
 	if (!exit_handler(argc, stack_a, stack_b, tab))
 		return (1);
 	return (0);

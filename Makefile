@@ -14,7 +14,7 @@ NAME = push_swap
 SRCDIR = ./src
 INCDIR = ./includes
 
-SRC = $(SRCDIR)/main.c \
+SRC = $(SRCDIR)/main.c $(SRCDIR)/sort/sort.c\
 $(SRCDIR)/operations/pushswap.c $(SRCDIR)/operations/rotate.c \
 $(SRCDIR)/utils/parsing.c $(SRCDIR)/utils/init.c $(SRCDIR)/utils/output.c \
 $(SRCDIR)/utils/exit.c $(SRCDIR)/utils/stack_check.c $(SRCDIR)/sort/sort_operations.c \
