@@ -85,12 +85,12 @@ int	find_median(t_list **stack)
 		}
 		i++;
 	}
-	while (nb % 5 != 0)
+	while (nb % 2 != 0)
 		nb++;
-	if (nb == 5)
+	if (nb == 2)
 		tmp = tab[0];
 	else
-		tmp = tab[nb / 5];
+		tmp = tab[nb / 2];
 	free(tab);
 	return tmp;
 }
