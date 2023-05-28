@@ -5,10 +5,12 @@ void    divide_stack(t_list **stack_a, t_list **stack_b)
     t_list	*current;
 	int		nb;
 	int		median;
+	int		chunk_size;
 
 	current = *stack_a;
-	median = find_median(stack_a);
 	nb = ft_lstsize(stack_a);
+	chunk_size = nb / 10;
+	median = find_median(stack_a, chunk_size);
 	if (nb % 2 == 0)
 		median++;
 	// printf("DEBUG cv %i md %i\n", current->value, median);
@@ -19,7 +21,7 @@ void    divide_stack(t_list **stack_a, t_list **stack_b)
 			push(stack_a, stack_b, 'a');
 			if (median <= find_min(stack_a))
 			{
-				median = find_median(stack_a);
+				median = find_median(stack_a, chunk_size);
 				nb = ft_lstsize(stack_a) / 4;
 				if (nb % 2 == 0)
 					median++;
@@ -30,9 +32,9 @@ void    divide_stack(t_list **stack_a, t_list **stack_b)
 			// printf("Debug cost med = %i a = %i cost b = %i", find_median(stack_b), cost_compute_a(stack_a, find_median(stack_a), 'v'), cost_compute_d(stack_a, find_median(stack_a), 'v'));
 			if (cost_compute_a(stack_a, median, 'v') > cost_compute_d(stack_a, median, 'v'))
 			{
-				if (double_rotation_evaluation(stack_a, stack_b) == 1)
-					rotate_both(stack_a, stack_b);
-				else
+			//	if (double_rotation_evaluation(stack_a, stack_b) == 1)
+			//		rotate_both(stack_a, stack_b);
+			//	else
 					rotate_single(stack_a, 'a');
 			}
 			else
@@ -116,4 +118,21 @@ int	double_rotation_evaluation(t_list **stack_a, t_list **stack_b)
 		return (1);
 	else
 		return (0);
+}
+
+/** Returns the value of the target node in the other stack.*/
+int	find_target_value(t_list **stack, t_list *node)
+{
+	t_list	*current;
+	int		target;
+
+	current = *stack;
+	target = find_max(stack);
+	while (current != NULL)
+	{
+		if (current->value > node->value && current->value < target)
+			target = current->value;
+		current = current->next;
+	}
+	return (target);
 }

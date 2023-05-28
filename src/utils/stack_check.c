@@ -53,7 +53,7 @@ int	is_sorted_d(t_list	**stack)
 	return (1);
 }
 
-int	find_median(t_list **stack)
+int	find_median(t_list **stack, int chunk_size)
 {
 	int		nb;
 	int		tmp;
@@ -85,12 +85,12 @@ int	find_median(t_list **stack)
 		}
 		i++;
 	}
-	while (nb % 2 != 0)
+	while (nb % chunk_size != 0)
 		nb++;
-	if (nb == 2)
+	if (nb == chunk_size)
 		tmp = tab[0];
 	else
-		tmp = tab[nb / 2];
+		tmp = tab[chunk_size];
 	free(tab);
 	return tmp;
 }
@@ -170,4 +170,28 @@ int	cost_compute_a(t_list **stack, int value, char mode)
 		current = current->next;
 	}
 	return (size - last_index);
+}
+/** Computes the number of moves needed to get a node, identified by value, to the top of the stack.
+ *  The returned value is negative if accessed by the bottom (ie reverse rotate). Positive otherwise.
+*/
+int cost_compute(t_list **stack, int target)
+{
+	t_list	*current;
+	int		i;
+	int		size;
+
+	current = *stack;
+	size = ft_lstsize(stack);
+	i = 0;
+	while (current)
+	{
+		if (current->value == target)
+			break;
+		current = current->next;
+		i++;
+	}
+	if (i < size - i)
+		return (i);
+	else
+		return ((size - i) * -1);
 }
