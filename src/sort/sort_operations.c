@@ -9,7 +9,9 @@ void    divide_stack(t_list **stack_a, t_list **stack_b)
 
 	current = *stack_a;
 	nb = ft_lstsize(stack_a);
-	chunk_size = nb / 10;
+	chunk_size = 3;
+	if (nb > 10)
+		chunk_size = nb / 10;
 	median = find_median(stack_a, chunk_size);
 	if (nb % 2 == 0)
 		median++;
@@ -87,7 +89,7 @@ void	basic_stack_sort_d(t_list **stack_a, t_list **stack_b)
 		else
 		{
 			// printf("Debug cost max = %i a = %i cost b = %i", find_max(stack_b), cost_compute_a(stack_b, find_max(stack_b), 'm'), cost_compute_d(stack_b, find_max(stack_b), 'm'));
-			if (cost_compute_a(stack_b, find_max(stack_b), 'm') >= cost_compute_d(stack_b, find_max(stack_b), 'm'))
+			if (cost_compute(stack_b, find_max(stack_b)) > 0)
 				rotate_single(stack_b, 'b');
 			else
 				rrotate_single(stack_b, 'b');
