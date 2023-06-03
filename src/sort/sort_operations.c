@@ -55,15 +55,15 @@ void	basic_stack_sort(t_list **stack, char id)
 	t_list	*l1;
 	t_list	*last;
 	int		i;
-	int		max;
+	//int		max;
 	
 	l1 = *stack;
 	last = ft_lstlast(*stack);
 	i = 0;
-	max = find_max(stack);
+	//max = find_max(stack);
 	while (!is_sorted(stack))
 	{
-		if ((l1->value > l1->next->value) && l1->value != max)
+		if ((l1->value > l1->next->value))
 			swap_single(stack, id);
 		else if ((l1->value < l1->next->value) && l1->value > last->value)
 			rrotate_single(stack, id);

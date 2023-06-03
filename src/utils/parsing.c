@@ -85,7 +85,7 @@ static int	is_overflow(char *value)
 		i++;
 	}
 	nb *= sign;
-	return (nb > INT_MAX || nb < INT_MIN);
+	return (nb >= INT_MAX || nb <= INT_MIN);
 }
 
 /** Parse the provided string array for overflowing arguments **/
