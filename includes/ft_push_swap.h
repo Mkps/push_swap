@@ -58,7 +58,7 @@ int		exit_handler(int argc, t_list **stack_a, t_list **stack_b, char **tab);
 int		is_sorted(t_list **stack);
 int		is_sorted_d(t_list **stack);
 int		find_median(t_list **stack, int chunk_size);
-int		find_target_value(t_list **stack, t_list *node);
+int		find_target_value(t_list **stack, int value);
 int		find_min(t_list **stack);
 int		find_max(t_list **stack);
 int		cost_compute_d(t_list **stack, int value, char mode);

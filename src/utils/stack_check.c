@@ -85,12 +85,12 @@ int	find_median(t_list **stack, int chunk_size)
 		}
 		i++;
 	}
-	while (nb % chunk_size != 0)
+	while (nb % 3 != 0)
 		nb++;
-	if (nb == chunk_size)
+	if (nb / 3 <= chunk_size)
 		tmp = tab[0];
 	else
-		tmp = tab[chunk_size];
+		tmp = tab[nb / 3];
 	free(tab);
 	return tmp;
 }
@@ -117,11 +117,14 @@ int	find_max(t_list **stack)
 	int		max;
 
 	current = *stack;
-	max = current->value;
+	max = INT_MIN;
 	while (current != NULL)
 	{
 		if (current->value > max)
+		{
 			max = current->value;
+			// printf("DEBUG: current:%i max:%i \n", current->value, max);
+		}
 		current = current->next;
 	}
 	return (max);
@@ -192,6 +195,5 @@ int cost_compute(t_list **stack, int target)
 	}
 	if (i < size - i)
 		return (i);
-	else
-		return ((size - i) * -1);
+	return ((size - i) * -1);
 }

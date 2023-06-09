@@ -11,10 +11,8 @@ void    divide_stack(t_list **stack_a, t_list **stack_b)
 	nb = ft_lstsize(stack_a);
 	chunk_size = 3;
 	if (nb > 10)
-		chunk_size = nb / 10;
+		chunk_size = nb / 3;
 	median = find_median(stack_a, chunk_size);
-	if (nb % 2 == 0)
-		median++;
 	// printf("DEBUG cv %i md %i\n", current->value, median);
     while (ft_lstsize(stack_a) > 3)
     {
@@ -22,21 +20,16 @@ void    divide_stack(t_list **stack_a, t_list **stack_b)
 		{
 			push(stack_a, stack_b, 'a');
 			if (median <= find_min(stack_a))
-			{
 				median = find_median(stack_a, chunk_size);
-				nb = ft_lstsize(stack_a) / 4;
-				if (nb % 2 == 0)
-					median++;
-			}
 		}
 		else
 		{
 			// printf("Debug cost med = %i a = %i cost b = %i", find_median(stack_b), cost_compute_a(stack_a, find_median(stack_a), 'v'), cost_compute_d(stack_a, find_median(stack_a), 'v'));
 			if (cost_compute_a(stack_a, median, 'v') > cost_compute_d(stack_a, median, 'v'))
 			{
-			//	if (double_rotation_evaluation(stack_a, stack_b) == 1)
-			//		rotate_both(stack_a, stack_b);
-			//	else
+				// if (double_rotation_evaluation(stack_a, stack_b) == 1)
+				// 	rotate_both(stack_a, stack_b);
+				// else
 					rotate_single(stack_a, 'a');
 			}
 			else
@@ -53,25 +46,34 @@ void    divide_stack(t_list **stack_a, t_list **stack_b)
 void	basic_stack_sort(t_list **stack, char id)
 {
 	t_list	*l1;
-	t_list	*last;
+	int		size;
 	int		i;
-	//int		max;
+	int		max;
 	
 	l1 = *stack;
-	last = ft_lstlast(*stack);
+	size = ft_lstsize(stack);
 	i = 0;
-	//max = find_max(stack);
+	max = find_max(stack);
+	while (l1->value != find_min(stack))
+	{
+		l1 = l1->next;
+		i++;
+	}
+	l1 = *stack;
 	while (!is_sorted(stack))
 	{
-		if ((l1->value > l1->next->value))
+		if ((l1->value > l1->next->value) && l1->value != max)
 			swap_single(stack, id);
-		else if ((l1->value < l1->next->value) && l1->value > last->value)
-			rrotate_single(stack, id);
+		// else if (((l1->value < l1->next->value) && l1->value > last->value))
+		// 	rrotate_single(stack, id);
 		else
-			rotate_single(stack, id);
+			if (i < size / 2)
+				rotate_single(stack, id);
+			else
+				rrotate_single(stack, id);
 		l1 = *stack;
-		last = ft_lstlast(*stack);
-		i++;
+		// last = ft_lstlast(*stack);
+
 		// output_stack(stack);
 		// printf("\nDEBUG iteration %i\n", i);
 	}
@@ -123,18 +125,23 @@ int	double_rotation_evaluation(t_list **stack_a, t_list **stack_b)
 }
 
 /** Returns the value of the target node in the other stack.*/
-int	find_target_value(t_list **stack, t_list *node)
+int	find_target_value(t_list **stack, int value)
 {
 	t_list	*current;
 	int		target;
+	int		max_current;
 
 	current = *stack;
 	target = find_max(stack);
+	max_current = find_max(&current);
 	while (current != NULL)
 	{
-		if (current->value > node->value && current->value < target)
+		if (max_current > find_max(stack))
+			return (find_min(stack));
+		if (current->value > value && current->value < target)
 			target = current->value;
 		current = current->next;
 	}
+	// printf("DEBUG: node value = %i target = %i\n", value, target);
 	return (target);
 }
