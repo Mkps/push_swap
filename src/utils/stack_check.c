@@ -85,12 +85,16 @@ int	find_median(t_list **stack, int chunk_size)
 		}
 		i++;
 	}
-	while (nb % 3 != 0)
-		nb++;
-	if (nb / 3 <= chunk_size)
+	if (nb - 3 < 0)
 		tmp = tab[0];
+	else if (nb < chunk_size)
+		tmp = tab[nb - 2];
 	else
-		tmp = tab[nb / 3];
+	{
+		while (nb % 2 != 0)
+			nb++;
+		tmp = tab[nb / 2];
+	}
 	free(tab);
 	return tmp;
 }

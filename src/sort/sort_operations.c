@@ -2,16 +2,16 @@
 
 void    divide_stack(t_list **stack_a, t_list **stack_b)
 {
-    t_list	*current;
-	int		nb;
+  	t_list 	*current;
+	int     nb;
 	int		median;
 	int		chunk_size;
 
 	current = *stack_a;
 	nb = ft_lstsize(stack_a);
-	chunk_size = 3;
+	chunk_size = 2;
 	if (nb > 10)
-		chunk_size = nb / 3;
+		chunk_size = nb / 2;
 	median = find_median(stack_a, chunk_size);
 	// printf("DEBUG cv %i md %i\n", current->value, median);
     while (ft_lstsize(stack_a) > 3)
@@ -25,20 +25,20 @@ void    divide_stack(t_list **stack_a, t_list **stack_b)
 		else
 		{
 			// printf("Debug cost med = %i a = %i cost b = %i", find_median(stack_b), cost_compute_a(stack_a, find_median(stack_a), 'v'), cost_compute_d(stack_a, find_median(stack_a), 'v'));
-			if (cost_compute_a(stack_a, median, 'v') > cost_compute_d(stack_a, median, 'v'))
-			{
+			// if (cost_compute_a(stack_a, median, 'v') > cost_compute_d(stack_a, median, 'v'))
+			// {
 				// if (double_rotation_evaluation(stack_a, stack_b) == 1)
 				// 	rotate_both(stack_a, stack_b);
 				// else
 					rotate_single(stack_a, 'a');
-			}
-			else
-				rrotate_single(stack_a, 'a');
+			//}
+			// else
+			// 	rrotate_single(stack_a, 'a');
 		}
 		current = *stack_a;
 		// output_stack(stack_a);
 		// output_stack(stack_b);
-		// printf("DEBUG cv %i md %i nb %i\n", current->value, median, nb);
+		// printf("DEBUG cv %i md %i min %i\n", current->value, median, find_min(stack_a));
 
     }
 }
@@ -129,14 +129,17 @@ int	find_target_value(t_list **stack, int value)
 {
 	t_list	*current;
 	int		target;
+	int		max;
 	int		max_current;
 
 	current = *stack;
-	target = find_max(stack);
-	max_current = find_max(&current);
+	max = find_max(stack);
+	if (value > max)
+		return (find_min(stack));
+	max_current = max;
 	while (current != NULL)
 	{
-		if (max_current > find_max(stack))
+		if (max_current > max)
 			return (find_min(stack));
 		if (current->value > value && current->value < target)
 			target = current->value;
