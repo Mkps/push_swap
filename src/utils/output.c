@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_push_swap.h"
+#include "../includes/ft_push_swap.h"
 
 /** Outputs "Error" followed by a nl */
 void	output_error(void)
@@ -18,6 +18,13 @@ void	output_error(void)
 	write(1, "Error\n", 6);
 }
 
+void	output_OK(int OK)
+{
+	if (OK == 1)
+		write(1, "OK\n", 3);
+	else
+		write(1, "KO\n", 3);
+}
 /** Outputs the values currently contained in the stack passed as argument*/
 void	output_stack(t_list **stack)
 {

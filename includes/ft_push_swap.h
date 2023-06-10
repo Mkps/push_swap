@@ -35,8 +35,8 @@ int		ft_lstsize(t_list **lst);
 t_list	*ft_lstlast(t_list *lst);
 void	ft_lstdelone(t_list *lst);
 void	ft_lstclear(t_list **lst);
-void	ft_lstadd_front(t_list **lst, t_list *new);
-void	ft_lstadd_back(t_list **lst, t_list *new);
+void	ft_lstadd_front(t_list **lst, t_list *node);
+void	ft_lstadd_back(t_list **lst, t_list *node);
 t_list	*ft_lstnew(int value);
 int		ft_atoi(const char *str);
 /**		Operations	**/
@@ -75,5 +75,6 @@ void	basic_stack_sort_d(t_list **stack_a, t_list **stack_b);
 void	output_move(char *mv);
 void	output_error(void);
 void	output_stack(t_list **stack);
+void  output_OK(int OK);
 
 #endif
