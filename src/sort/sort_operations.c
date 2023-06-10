@@ -27,11 +27,11 @@ void    divide_stack(t_list **stack_a, t_list **stack_b)
 			// printf("Debug cost med = %i a = %i cost b = %i", find_median(stack_b), cost_compute_a(stack_a, find_median(stack_a), 'v'), cost_compute_d(stack_a, find_median(stack_a), 'v'));
 			// if (cost_compute_a(stack_a, median, 'v') > cost_compute_d(stack_a, median, 'v'))
 			// {
-				// if (double_rotation_evaluation(stack_a, stack_b) == 1)
-				// 	rotate_both(stack_a, stack_b);
-				// else
+				if (double_rotation_evaluation(stack_a, stack_b) == 1)
+					rotate_both(stack_a, stack_b);
+				else
 					rotate_single(stack_a, 'a');
-			//}
+			// }
 			// else
 			// 	rrotate_single(stack_a, 'a');
 		}
