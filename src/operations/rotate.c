@@ -31,7 +31,7 @@ void	rrotate_single(t_list **stack, char id)
 		output_move("rrb");
 }
 
-void	rrotate_both(t_list **stack_a, t_list **stack_b)
+void	rrotate_both(t_list **stack_a, t_list **stack_b, char id)
 {
 	t_list	*last;
 	t_list	*current;
@@ -52,7 +52,8 @@ void	rrotate_both(t_list **stack_a, t_list **stack_b)
 		current = current->next;
 	ft_lstadd_front(stack_b, last);
 	current->next = NULL;
-	output_move("rrr");
+	if (id != 'o')
+		output_move("rrr");
 }
 
 void	rotate_single(t_list **stack, char id)
@@ -71,7 +72,7 @@ void	rotate_single(t_list **stack, char id)
 		output_move("rb");
 }
 
-void	rotate_both(t_list **stack_a, t_list **stack_b)
+void	rotate_both(t_list **stack_a, t_list **stack_b, char id)
 {
 	t_list	*current;
 
@@ -87,5 +88,6 @@ void	rotate_both(t_list **stack_a, t_list **stack_b)
 	ft_lstadd_back(stack_b, current);
 	*stack_b = current->next;
 	current->next = NULL;
-	output_move("rr");
+	if (id != 'o')
+		output_move("rr");
 }

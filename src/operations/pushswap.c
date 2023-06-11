@@ -26,11 +26,11 @@ void	swap_single(t_list **stack, char id)
 	*stack = next;
 	if (id == 'a')
 		output_move("sa");
-	else
+	if (id == 'b')
 		output_move("sb");
 }
 
-void	swap_both(t_list **stack_a, t_list **stack_b)
+void	swap_both(t_list **stack_a, t_list **stack_b, char id)
 {
 	t_list	*next;
 	t_list	*current;
@@ -49,7 +49,8 @@ void	swap_both(t_list **stack_a, t_list **stack_b)
 	current->next = next->next;
 	next->next = current;
 	*stack_b = next;
-	output_move("ss");
+	if (id != 'o')
+		output_move("ss");
 }
 
 void	push(t_list **pile_from, t_list **pile_to, char id)
@@ -66,6 +67,6 @@ void	push(t_list **pile_from, t_list **pile_to, char id)
 	tmp->next = next;
 	if (id == 'a')
 		output_move("pb");
-	else
+	if (id == 'b')
 		output_move("pa");
 }

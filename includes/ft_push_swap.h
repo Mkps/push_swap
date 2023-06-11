@@ -41,12 +41,12 @@ t_list	*ft_lstnew(int value);
 int		ft_atoi(const char *str);
 /**		Operations	**/
 void	swap_single(t_list **stack, char id);	
-void	swap_both(t_list **stack_a, t_list **stack_b);
+void	swap_both(t_list **stack_a, t_list **stack_b, char id);
 void	push(t_list **pile_from, t_list **pile_to, char id);
 void	rotate_single(t_list **stack, char id);
-void	rotate_both(t_list **stack_a, t_list **stack_b);
+void	rotate_both(t_list **stack_a, t_list **stack_b, char id);
 void	rrotate_single(t_list **stack, char id);
-void	rrotate_both(t_list **stack_a, t_list **stack_b);
+void	rrotate_both(t_list **stack_a, t_list **stack_b, char id);
 /**		Utils	**/
 int		elem_number(int argc, char **argv);
 unsigned int	ft_abs(int number);

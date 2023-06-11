@@ -137,7 +137,7 @@ void	sort_stack(t_list **stack_a, t_list **stack_b)
 		// printf("DEbUG cost_a: %i cost_b: %i", cost_a, cost_b);
 		if (cost_a > 0 && cost_b > 0)
 		{
-			rotate_both(stack_a, stack_b);
+			rotate_both(stack_a, stack_b, 'r');
 			cost_a--;
 			cost_b--;
 		}
@@ -153,7 +153,7 @@ void	sort_stack(t_list **stack_a, t_list **stack_b)
 		}
 		if (cost_a < 0 && cost_b < 0)
 		{
-			rrotate_both(stack_a, stack_b);
+			rrotate_both(stack_a, stack_b, 'r');
 			cost_a++;
 			cost_b++;
 		}
