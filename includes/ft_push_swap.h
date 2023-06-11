@@ -65,6 +65,7 @@ int		cost_compute_d(t_list **stack, int value, char mode);
 int		cost_compute_a(t_list **stack, int value, char mode);
 int		cost_compute(t_list **stack, int target);
 int		double_rotation_evaluation(t_list **stack_a, t_list **stack_b);
+char	*get_next_line(int fd);
 /**		Sorting	functions	**/
 void	sort_main(t_list **stack_a, t_list **stack_b);
 void    divide_stack(t_list **stack_a, t_list **stack_b);
@@ -75,6 +76,6 @@ void	basic_stack_sort_d(t_list **stack_a, t_list **stack_b);
 void	output_move(char *mv);
 void	output_error(void);
 void	output_stack(t_list **stack);
-void  output_OK(int OK);
+void  	output_OK(int OK);
 
 #endif
