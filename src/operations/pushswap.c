@@ -32,8 +32,23 @@ void	swap_single(t_list **stack, char id)
 
 void	swap_both(t_list **stack_a, t_list **stack_b)
 {
-	swap_single(stack_a, 'a');
-	swap_single(stack_b, 'b');
+	t_list	*next;
+	t_list	*current;
+
+	current = *stack_a;
+	if (current->next == NULL || !*stack_a)
+		return ;
+	next = current->next;
+	current->next = next->next;
+	next->next = current;
+	*stack_a = next;
+	current = *stack_b;
+	if (current->next == NULL || !*stack_b)
+		return ;
+	next = current->next;
+	current->next = next->next;
+	next->next = current;
+	*stack_b = next;
 	output_move("ss");
 }
 
