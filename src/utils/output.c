@@ -18,13 +18,14 @@ void	output_error(void)
 	write(1, "Error\n", 6);
 }
 
-void	output_OK(int OK)
+void	output_ok(int ok)
 {
-	if (OK == 1)
+	if (ok == 1)
 		write(1, "OK\n", 3);
 	else
 		write(1, "KO\n", 3);
 }
+
 /** Outputs the values currently contained in the stack passed as argument*/
 void	output_stack(t_list **stack)
 {

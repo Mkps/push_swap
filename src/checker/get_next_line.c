@@ -12,6 +12,10 @@
 
 #include "get_next_line.h"
 #include <stdint.h>
+#include <stdio.h>
+#include <fcntl.h>
+#include <string.h>
+
 #ifndef BUFFER_SIZE
 # define BUFFER_SIZE 4096
 #endif
@@ -119,7 +123,3 @@ char	*get_next_line(int fd)
 	buffer = ft_getleftover(buffer);
 	return (line);
 }
-
-#include <stdio.h>
-#include <fcntl.h>
-#include <string.h>

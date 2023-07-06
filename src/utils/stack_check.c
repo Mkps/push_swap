@@ -53,87 +53,6 @@ int	is_sorted_d(t_list	**stack)
 	return (1);
 }
 
-int	find_median(t_list **stack, int chunk_size)
-{
-	int		nb;
-	int		tmp;
-	int		i;
-	int		*tab;
-	t_list	*current;
-
-	nb = ft_lstsize(stack);
-	tab = malloc(nb * sizeof (int));
-	if (!tab)
-		return (0);
-	current = *stack;
-	i = 0;
-	while (current != NULL)
-	{
-		tab[i] = current->value;
-		current = current->next;
-		i++;
-	}
-	i = 0;
-	while (i < nb)
-	{
-		if (tab[i] > tab[i + 1])
-		{
-			tmp = tab[i];
-			tab[i] = tab[i + 1];
-			tab[i + 1] = tmp;
-			i = 0;
-		}
-		i++;
-	}
-	if (nb - 3 < 0)
-		tmp = tab[0];
-	else if (nb < chunk_size)
-		tmp = tab[nb - 2];
-	else
-	{
-		while (nb % 2 != 0)
-			nb++;
-		tmp = tab[nb / 2];
-	}
-	free(tab);
-	return tmp;
-}
-
-int	find_min(t_list **stack)
-{
-	t_list *current;
-	int		min;
-
-	current = *stack;
-	min = current->value;
-	while (current != NULL)
-	{
-		if (current->value < min)
-			min = current->value;
-		current = current->next;
-	}
-	return (min);
-}
-
-int	find_max(t_list **stack)
-{
-	t_list *current;
-	int		max;
-
-	current = *stack;
-	max = INT_MIN;
-	while (current != NULL)
-	{
-		if (current->value > max)
-		{
-			max = current->value;
-			// printf("DEBUG: current:%i max:%i \n", current->value, max);
-		}
-		current = current->next;
-	}
-	return (max);
-}
-
 /** Finds the lowest cost to get the value onto the top of the stack from r. */
 int	cost_compute_d(t_list **stack, int value, char mode)
 {
@@ -178,10 +97,12 @@ int	cost_compute_a(t_list **stack, int value, char mode)
 	}
 	return (size - last_index);
 }
-/** Computes the number of moves needed to get a node, identified by value, to the top of the stack.
- *  The returned value is negative if accessed by the bottom (ie reverse rotate). Positive otherwise.
-*/
-int cost_compute(t_list **stack, int target)
+
+//  Computes the number of moves needed to get a node, 
+// identified by value, to the top of the stack.
+//  The returned value is negative if accessed by the bottom
+//  (ie reverse rotate). Positive otherwise.
+int	cost_compute(t_list **stack, int target)
 {
 	t_list	*current;
 	int		i;
@@ -193,7 +114,7 @@ int cost_compute(t_list **stack, int target)
 	while (current)
 	{
 		if (current->value == target)
-			break;
+			break ;
 		current = current->next;
 		i++;
 	}

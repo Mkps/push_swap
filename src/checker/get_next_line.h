@@ -25,6 +25,6 @@ char	*ft_strchr(const char *string, int searchedChar );
 void	ft_bzero(void *s, size_t n);
 void	*ft_calloc(size_t nmemb, size_t size);
 size_t	ft_strlen(const char *str);
-void    input_move(char ***buf);
+void	input_move(char ***buf);
 
 #endif
