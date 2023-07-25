@@ -6,7 +6,7 @@
 /*   By: alx <alx@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 15:32:25 by aloubier          #+#    #+#             */
-/*   Updated: 2023/07/25 11:40:57 by alx              ###   ########.fr       */
+/*   Updated: 2023/07/25 12:02:49 by alx              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 # include <unistd.h>
 # include <stdint.h>
 # include <stdarg.h>
-
 
 int		ft_isalpha(int c);
 int		ft_isdigit(int c);
