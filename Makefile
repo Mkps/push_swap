@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: aloubier <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: alx <alx@student.42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/24 12:58:01 by aloubier          #+#    #+#              #
-#    Updated: 2023/04/28 18:59:48 by aloubier         ###   ########.fr        #
+#    Updated: 2023/07/25 07:12:08 by alx              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,7 @@ INCDIR = ./includes
 
 SRC = $(SRCDIR)/sort/sort.c \
 $(SRCDIR)/operations/pushswap.c $(SRCDIR)/operations/rotate.c \
+$(SRCDIR)/utils/median.c $(SRCDIR)/utils/minmax.c \
 $(SRCDIR)/utils/parsing.c $(SRCDIR)/utils/init.c $(SRCDIR)/utils/output.c \
 $(SRCDIR)/utils/exit.c $(SRCDIR)/utils/stack_check.c $(SRCDIR)/sort/sort_operations.c \
 ./src/utils/libft/ft_atoi.c ./src/utils/libft/ft_lstadd_back.c ./src/utils/libft/ft_lstadd_front.c \
