@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   output.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aloubier <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: alx <alx@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 15:59:34 by aloubier          #+#    #+#             */
-/*   Updated: 2023/04/28 17:16:20 by aloubier         ###   ########.fr       */
+/*   Updated: 2023/07/25 11:57:24 by alx              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,14 +33,14 @@ void	output_stack(t_list **stack)
 	t_list	*tmp;
 
 	tmp = *stack;
-	printf("\n|||");
+	ft_printf("\n|||");
 	if (*stack == NULL)
-		printf("Empty");
+		ft_printf("Empty");
 	while (tmp)
 	{
 		current = tmp;
 		tmp = current->next;
-		printf("%i ", current->value);
+		ft_printf("%i ", current->value);
 	}
 }
 
@@ -48,7 +48,7 @@ void	output_stack(t_list **stack)
 void	output_move(char *mv)
 {
 	if (mv)
-		printf("%s\n", mv);
+		ft_printf("%s\n", mv);
 	else
 		output_error();
 }

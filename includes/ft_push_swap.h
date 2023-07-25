@@ -6,7 +6,7 @@
 /*   By: alx <alx@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 13:08:27 by aloubier          #+#    #+#             */
-/*   Updated: 2023/07/25 10:29:05 by alx              ###   ########.fr       */
+/*   Updated: 2023/07/25 11:40:37 by alx              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <stdio.h>
 # include <stddef.h>
 # include <limits.h>
+# include "../libft/libft.h"
 
 typedef struct s_list	t_list;
 
