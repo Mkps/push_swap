@@ -18,7 +18,7 @@ int	sort_tab(int *tab, int nb)
 	int	tmp;
 
 	i = 0;
-	while (i < nb)
+	while (i < nb - 1)
 	{
 		if (tab[i] > tab[i + 1])
 		{
@@ -54,6 +54,8 @@ int	find_median(t_list **stack, int chunk_size)
 	int		*tab;
 
 	nb = ft_lstsize(stack);
+	if (nb <= 3)
+		return (0);
 	tab = malloc(nb * sizeof (int));
 	if (!tab)
 		return (0);

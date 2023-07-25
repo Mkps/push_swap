@@ -6,7 +6,7 @@
 /*   By: alx <alx@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 07:14:24 by alx               #+#    #+#             */
-/*   Updated: 2023/07/25 08:34:35 by alx              ###   ########.fr       */
+/*   Updated: 2023/07/25 09:11:20 by alx              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ void	ext_cost_compute(int *c_a, int *c_b, t_list **s_a, t_list **s_b)
 	t_list	*node_b;
 	int		tmp_a;
 	int		tmp_b;
+	int		target;
 	int		val;
 
 	val = INT_MIN;
@@ -66,7 +67,8 @@ void	ext_cost_compute(int *c_a, int *c_b, t_list **s_a, t_list **s_b)
 	while (node_b != NULL)
 	{
 		tmp_b = cost_compute(s_b, node_b->value);
-		tmp_a = cost_compute(s_a, find_target_value(s_a, node_b->value));
+		target = find_target_value(s_a, node_b->value);
+		tmp_a = cost_compute(s_a, target);
 		if (ft_abs(tmp_a) + ft_abs(tmp_b) < ft_abs(*c_a) + ft_abs(*c_b) 
 			|| (ft_abs(tmp_a) + ft_abs(tmp_b) + (val - node_b->value) 
 				<= ft_abs(*c_a) + ft_abs(*c_b) && node_b->value > val))
