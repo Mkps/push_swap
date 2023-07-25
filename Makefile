@@ -6,7 +6,7 @@
 #    By: alx <alx@student.42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/24 12:58:01 by aloubier          #+#    #+#              #
-#    Updated: 2023/07/25 07:12:08 by alx              ###   ########.fr        #
+#    Updated: 2023/07/25 08:32:17 by alx              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,8 +15,8 @@ NAME_BNS = checker_bonus
 SRCDIR = ./src
 INCDIR = ./includes
 
-SRC = $(SRCDIR)/sort/sort.c \
-$(SRCDIR)/operations/pushswap.c $(SRCDIR)/operations/rotate.c \
+SRC = $(SRCDIR)/sort/sort.c $(SRCDIR)/sort/sort_extend.c \
+$(SRCDIR)/operations/pushswap.c $(SRCDIR)/operations/do_operation.c $(SRCDIR)/operations/rotate.c \
 $(SRCDIR)/utils/median.c $(SRCDIR)/utils/minmax.c \
 $(SRCDIR)/utils/parsing.c $(SRCDIR)/utils/init.c $(SRCDIR)/utils/output.c \
 $(SRCDIR)/utils/exit.c $(SRCDIR)/utils/stack_check.c $(SRCDIR)/sort/sort_operations.c \

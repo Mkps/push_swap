@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sort.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: alx <alx@student.42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/07/25 07:14:24 by alx               #+#    #+#             */
+/*   Updated: 2023/07/25 08:34:35 by alx              ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_push_swap.h"
 
 void	sort_stack(t_list **stack_a, t_list **stack_b);
@@ -12,83 +24,60 @@ void	sort_main(t_list **stack_a, t_list **stack_b)
 	basic_stack_sort(stack_a, 'a');
 }
 
-void	push_index(t_list **stack_a, t_list **stack_b)
-{
-	t_list	*current;
-	int		i_start;
-	int		i_ind;
-	int		i_max;
-	int		i;
-
-	i = 0;
-	i_max = 0;
-	current = *stack_a;
-	i_start = current->value;
-	i_ind = i_start;
-	while (current->next != NULL)
-	{
-		if (i > i_max)
-		{
-			i_max = i;
-			i_ind = i_start;
-		}
-		if (current->next->value < current->value)
-		{
-			i = 0;
-			i_start = current->next->value;
-		}
-		i++;
-		current = current->next;
-	}
-	current = *stack_a;
-	while (current->value != i_ind)
-	{
-		push(stack_a, stack_b, 'a');
-		current = *stack_a;
-	}
-	while (current->next->value > current->value)
-	{
-		rotate_single(stack_a, 'a');
-		current = *stack_a;
-	}
-	if (current->next->value < current->value)
-		rotate_single(stack_a, 'a');
-	current = *stack_a;
-	while (current->value != i_ind)
-	{
-		push(stack_a, stack_b, 'a');
-		current = *stack_a;
-	}
-}
-
 /**Sort 3 items with the lowest amount of moves. */
 void	sort_three(t_list **stack_a, t_list **stack_b)
 {
-	t_list	*current;
-	t_list	*nxt;
-	t_list	*last;
+	t_list	*c;
+	t_list	*n;
+	t_list	*l;
 
-	current = *stack_a;
-	nxt = current->next;
-	last = nxt->next;
-	if (current->value > nxt->value && nxt->value < last->value && current->value < last->value)
+	c = *stack_a;
+	n = c->next;
+	l = n->next;
+	if (c->value > n->value && n->value < l->value && c->value < l->value)
 		swap_single(stack_a, 'a');
-	if (current->value > nxt->value && nxt->value > last->value && current->value > last->value)
+	if (c->value > n->value && n->value > l->value && c->value > l->value)
 	{
 		swap_single(stack_a, 'a');
 		rrotate_single(stack_a, 'a');
 	}
-	if (current->value > nxt->value && nxt->value < last->value && current->value > last->value)
+	if (c->value > n->value && n->value < l->value && c->value > l->value)
 		rotate_single(stack_a, 'a');
-	if (current->value < nxt->value && nxt->value > last->value && current->value < last->value)
+	if (c->value < n->value && n->value > l->value && c->value < l->value)
 	{
 		swap_single(stack_a, 'a');
 		rotate_single(stack_a, 'a');
 	}
-	if (current->value < nxt->value && nxt->value > last->value && current->value > last->value)
+	if (c->value < n->value && n->value > l->value && c->value > l->value)
 		rrotate_single(stack_a, 'a');
 	if (!stack_b)
 		return ;
+}
+
+void	ext_cost_compute(int *c_a, int *c_b, t_list **s_a, t_list **s_b)
+{
+	t_list	*node_b;
+	int		tmp_a;
+	int		tmp_b;
+	int		val;
+
+	val = INT_MIN;
+	node_b = *s_b;
+	while (node_b != NULL)
+	{
+		tmp_b = cost_compute(s_b, node_b->value);
+		tmp_a = cost_compute(s_a, find_target_value(s_a, node_b->value));
+		if (ft_abs(tmp_a) + ft_abs(tmp_b) < ft_abs(*c_a) + ft_abs(*c_b) 
+			|| (ft_abs(tmp_a) + ft_abs(tmp_b) + (val - node_b->value) 
+				<= ft_abs(*c_a) + ft_abs(*c_b) && node_b->value > val))
+		{
+			if (val > node_b->value)
+				val = node_b->value;
+			*c_a = tmp_a;
+			*c_b = tmp_b;
+		}
+		node_b = node_b->next;
+	}
 }
 
 void	sort_stack(t_list **stack_a, t_list **stack_b)
@@ -96,64 +85,21 @@ void	sort_stack(t_list **stack_a, t_list **stack_b)
 	t_list	*node_b;
 	int		cost_a;
 	int		cost_b;
-	int		tmp_a;
-	int		tmp_b;
-	int		val;
 
 	node_b = *stack_b;
 	cost_a = 10000;
 	cost_b = 10000;
-	val = INT_MIN;
 	while (node_b != NULL)
 	{
-		while (node_b != NULL)
-		{
-			tmp_b = cost_compute(stack_b, node_b->value);
-			tmp_a = cost_compute(stack_a, find_target_value(stack_a, node_b->value));
-			if (ft_abs(tmp_a) + ft_abs(tmp_b) < ft_abs(cost_a) + ft_abs(cost_b) 
-				|| (ft_abs(tmp_a) + ft_abs(tmp_b) + (val - node_b->value) <= ft_abs(cost_a) + ft_abs(cost_b) && node_b->value > val))
-			{
-				if (val > node_b->value)
-					val = node_b->value;
-				cost_a = tmp_a;
-				cost_b = tmp_b;
-			}
-			node_b = node_b->next;
-		}
+		ext_cost_compute(&cost_a, &cost_b, stack_a, stack_b);
 		while (cost_a || cost_b)
 		{
-			if (cost_a > 0 && cost_b > 0)
-			{
-				rotate_both(stack_a, stack_b, 'r');
-				cost_a--;
-				cost_b--;
-			}
-			if (cost_a > 0)
-			{
-				rotate_single(stack_a, 'a');
-				cost_a--;
-			}
-			if (cost_b > 0)
-			{
-				rotate_single(stack_b, 'b');
-				cost_b--;
-			}
-			if (cost_a < 0 && cost_b < 0)
-			{
-				rrotate_both(stack_a, stack_b, 'r');
-				cost_a++;
-				cost_b++;
-			}
-			if (cost_a < 0)
-			{
-				rrotate_single(stack_a, 'a');
-				cost_a++;
-			}
-			if (cost_b < 0)
-			{
-				rrotate_single(stack_b, 'b');
-				cost_b++;
-			}
+			do_d_rotate(stack_a, stack_b, &cost_a, &cost_b);
+			do_s_rotate(stack_a, 'a', &cost_a);
+			do_s_rotate(stack_b, 'b', &cost_b);
+			do_d_rrotate(stack_a, stack_b, &cost_a, &cost_b);
+			do_s_rrotate(stack_a, 'a', &cost_a);
+			do_s_rrotate(stack_b, 'b', &cost_b);
 		}
 		push(stack_b, stack_a, 'b');
 		cost_a = 10000;

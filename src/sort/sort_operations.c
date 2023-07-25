@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sort_operations.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: alx <alx@student.42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/07/25 07:16:49 by alx               #+#    #+#             */
+/*   Updated: 2023/07/25 07:26:49 by alx              ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_push_swap.h"
 
 void	divide_stack(t_list **stack_a, t_list **stack_b)
@@ -22,12 +34,7 @@ void	divide_stack(t_list **stack_a, t_list **stack_b)
 				median = find_median(stack_a, chunk_size);
 		}
 		else
-		{
-			if (double_rotation_evaluation(stack_a, stack_b) == 1)
-				rotate_both(stack_a, stack_b, 'r');
-			else
-				rotate_single(stack_a, 'a');
-		}
+			rot_divide(stack_a, stack_b);
 		current = *stack_a;
 	}
 }
@@ -54,12 +61,7 @@ void	basic_stack_sort(t_list **stack, char id)
 		if ((l1->value > l1->next->value) && l1->value != max)
 			swap_single(stack, id);
 		else
-		{
-			if (i < size / 2)
-				rotate_single(stack, id);
-			else
-				rrotate_single(stack, id);
-		}
+			ext_stack_sort(stack, id, i, size);
 		l1 = *stack;
 	}
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_push_swap.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aloubier <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: alx <alx@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 13:08:27 by aloubier          #+#    #+#             */
-/*   Updated: 2023/04/28 18:58:14 by aloubier         ###   ########.fr       */
+/*   Updated: 2023/07/25 08:47:56 by alx              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	rrotate_single(t_list **stack, char id);
 void	rrotate_both(t_list **stack_a, t_list **stack_b, char id);
 /**		Utils	**/
 int		elem_number(int argc, char **argv);
-unsigned int	ft_abs(int number);
+size_t	ft_abs(int number);
 int		parse_error(char **value);
 char	**import_args(int size, char **argv);
 t_list	**create_stack(int size); 
@@ -68,7 +68,7 @@ int		double_rotation_evaluation(t_list **stack_a, t_list **stack_b);
 char	*get_next_line(int fd);
 /**		Sorting	functions	**/
 void	sort_main(t_list **stack_a, t_list **stack_b);
-void    divide_stack(t_list **stack_a, t_list **stack_b);
+void	divide_stack(t_list **stack_a, t_list **stack_b);
 void	sort_three(t_list **stack_a, t_list **stack_b);
 void	basic_stack_sort(t_list **stack, char id);
 void	basic_stack_sort_d(t_list **stack_a, t_list **stack_b);
@@ -76,6 +76,13 @@ void	basic_stack_sort_d(t_list **stack_a, t_list **stack_b);
 void	output_move(char *mv);
 void	output_error(void);
 void	output_stack(t_list **stack);
-void  	output_OK(int OK);
+void	output_OK(int OK);
+/**		extending functions */
+void	rot_divide(t_list **stack_a, t_list **stack_b);
+void	ext_stack_sort(t_list **stack, char id, int i, int size);
+void	do_s_rotate(t_list **stack, char id, int *cost);
+void	do_s_rrotate(t_list **stack, char id, int *cost);
+void	do_d_rotate(t_list **s_a, t_list **s_b, int *c_a, int *c_b);
+void	do_d_rrotate(t_list **s_a, t_list **s_b, int *c_a, int *c_b);
 
 #endif
