@@ -6,7 +6,7 @@
 /*   By: alx <alx@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 07:16:49 by alx               #+#    #+#             */
-/*   Updated: 2023/07/25 09:12:22 by alx              ###   ########.fr       */
+/*   Updated: 2023/07/25 09:18:50 by alx              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,7 +119,7 @@ int	find_target_value(t_list **stack, int value)
 	if (value > max)
 		return (find_min(stack));
 	max_current = max;
-	target = current->value;
+	target = INT_MAX;
 	while (current != NULL)
 	{
 		if (max_current > max)
