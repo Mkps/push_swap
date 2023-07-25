@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aloubier <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: alx <alx@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 17:18:48 by aloubier          #+#    #+#             */
-/*   Updated: 2023/04/26 19:18:06 by aloubier         ###   ########.fr       */
+/*   Updated: 2023/07/25 10:03:42 by alx              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ static int	is_overflow(char *value)
 		i++;
 	}
 	nb *= sign;
-	return (nb >= INT_MAX || nb <= INT_MIN);
+	return (nb > INT_MAX || nb < INT_MIN);
 }
 
 /** Parse the provided string array for overflowing arguments **/

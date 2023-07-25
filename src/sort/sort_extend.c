@@ -6,7 +6,7 @@
 /*   By: alx <alx@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 07:26:23 by alx               #+#    #+#             */
-/*   Updated: 2023/07/25 07:28:52 by alx              ###   ########.fr       */
+/*   Updated: 2023/07/25 10:32:35 by alx              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,4 +26,24 @@ void	ext_stack_sort(t_list **stack, char id, int i, int size)
 		rotate_single(stack, id);
 	else
 		rrotate_single(stack, id);
+}
+
+void	ext_sort_three(t_list **stack_a, int c, int n, int l)
+{
+	if (c > n && n < l && c < l)
+		swap_single(stack_a, 'a');
+	if (c > n && n > l && c > l)
+	{
+		swap_single(stack_a, 'a');
+		rrotate_single(stack_a, 'a');
+	}
+	if (c > n && n < l && c > l)
+		rotate_single(stack_a, 'a');
+	if (c < n && n > l && c < l)
+	{
+		swap_single(stack_a, 'a');
+		rotate_single(stack_a, 'a');
+	}
+	if (c < n && n > l && c > l)
+		rrotate_single(stack_a, 'a');
 }

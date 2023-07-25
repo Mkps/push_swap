@@ -6,7 +6,7 @@
 /*   By: alx <alx@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 07:14:24 by alx               #+#    #+#             */
-/*   Updated: 2023/07/25 09:11:20 by alx              ###   ########.fr       */
+/*   Updated: 2023/07/25 10:31:38 by alx              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,23 +33,15 @@ void	sort_three(t_list **stack_a, t_list **stack_b)
 
 	c = *stack_a;
 	n = c->next;
+	if (n->next == NULL)
+	{
+		if (c->value > n->value)
+			swap_single(stack_a, 'a');
+		if (!stack_b)
+			return ;
+	}
 	l = n->next;
-	if (c->value > n->value && n->value < l->value && c->value < l->value)
-		swap_single(stack_a, 'a');
-	if (c->value > n->value && n->value > l->value && c->value > l->value)
-	{
-		swap_single(stack_a, 'a');
-		rrotate_single(stack_a, 'a');
-	}
-	if (c->value > n->value && n->value < l->value && c->value > l->value)
-		rotate_single(stack_a, 'a');
-	if (c->value < n->value && n->value > l->value && c->value < l->value)
-	{
-		swap_single(stack_a, 'a');
-		rotate_single(stack_a, 'a');
-	}
-	if (c->value < n->value && n->value > l->value && c->value > l->value)
-		rrotate_single(stack_a, 'a');
+	ext_sort_three(stack_a, c->value, n->value, l->value);
 	if (!stack_b)
 		return ;
 }

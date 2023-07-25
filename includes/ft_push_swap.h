@@ -6,7 +6,7 @@
 /*   By: alx <alx@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 13:08:27 by aloubier          #+#    #+#             */
-/*   Updated: 2023/07/25 08:47:56 by alx              ###   ########.fr       */
+/*   Updated: 2023/07/25 10:29:05 by alx              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,7 @@ void	output_OK(int OK);
 /**		extending functions */
 void	rot_divide(t_list **stack_a, t_list **stack_b);
 void	ext_stack_sort(t_list **stack, char id, int i, int size);
+void	ext_sort_three(t_list **stack, int c, int n, int l);
 void	do_s_rotate(t_list **stack, char id, int *cost);
 void	do_s_rrotate(t_list **stack, char id, int *cost);
 void	do_d_rotate(t_list **s_a, t_list **s_b, int *c_a, int *c_b);
