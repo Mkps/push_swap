@@ -6,7 +6,7 @@
 /*   By: aloubier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 17:18:48 by aloubier          #+#    #+#             */
-/*   Updated: 2023/08/22 14:03:50 by aloubier         ###   ########.fr       */
+/*   Updated: 2023/08/22 16:20:28 by aloubier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,14 +80,12 @@ static int	is_overflow(char *value)
 	nb = 0;
 	while (value[i] && (value[i] >= '0' && value[i] <= '9'))
 	{
-		nb *= 10;
-		nb += value[i] - '0';
-		if (nb > INT_MAX || nb < INT_MIN)
+		nb = (nb * 10) + value[i++] - '0';
+		if (nb * sign > INT_MAX || nb * sign < INT_MIN)
 			return (EXIT_FAILURE);
-		i++;
 	}
 	nb *= sign;
-	return (nb > INT_MAX || nb < INT_MIN);
+	return (EXIT_SUCCESS);
 }
 
 /** Parse the provided string array for overflowing arguments **/
@@ -110,7 +108,7 @@ static int	parse_overflow(char **value)
 int	parse_error(char **value)
 {
 	if (value[0] == 0)
-		return (1);
+		return (output_error(), 1);
 	if (parse_invalid(value) == 1)
 		return (1);
 	if (parse_duplicate(value) == 1)

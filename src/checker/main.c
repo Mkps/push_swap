@@ -6,7 +6,7 @@
 /*   By: aloubier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 07:03:10 by alx               #+#    #+#             */
-/*   Updated: 2023/08/22 15:44:13 by aloubier         ###   ########.fr       */
+/*   Updated: 2023/08/22 16:09:15 by aloubier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	move_extend(int value, t_list **stack_a, t_list **stack_b)
 void	exec_move(t_list **head, t_list **stack_a, t_list **stack_b)
 {
 	t_list	*current;
-	
+
 	current = *head;
 	while (current)
 	{
@@ -51,6 +51,27 @@ void	exec_move(t_list **head, t_list **stack_a, t_list **stack_b)
 	}
 }
 
+int	init_stacks(t_list **move_list, t_list **stack_a, t_list **stack_b)
+{
+	stack_a = create_stack(1);
+	if (!stack_a)
+		return (EXIT_FAILURE);
+	stack_b = create_stack(1);
+	if (!stack_b)
+	{
+		free(stack_a);
+		return (EXIT_FAILURE);
+	}
+	move_list = create_stack(1);
+	if (!move_list)
+	{
+		free(stack_a);
+		free(stack_a);
+		return (EXIT_FAILURE);
+	}
+	return (EXIT_SUCCESS);
+}
+
 int	main(int argc, char **argv)
 {
 	char	**tab;
@@ -62,14 +83,7 @@ int	main(int argc, char **argv)
 	size = elem_number(argc, argv);
 	if (argc < 2)
 		return (0);
-	stack_a = create_stack(size);
-	if (!stack_a)
-		return (EXIT_FAILURE);
-	stack_b = create_stack(size);
-	if (!stack_b)
-		return (EXIT_FAILURE);
-	move_list = create_stack(1);
-	if (!move_list)
+	if (init_stacks == EXIT_FAILURE)
 		return (EXIT_FAILURE);
 	tab = import_args(argc, argv);
 	if (parse_error(tab))

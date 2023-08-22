@@ -6,7 +6,7 @@
 /*   By: aloubier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 07:05:56 by alx               #+#    #+#             */
-/*   Updated: 2023/08/22 15:59:12 by aloubier         ###   ########.fr       */
+/*   Updated: 2023/08/22 16:16:10 by aloubier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,16 @@ int	move_value(char *str)
 		return (SS_VALUE);
 	return (0);
 }
+
+int	input_error(char *buf, t_list **head)
+{
+	printf("Error\n");
+	ft_lstclear(head);
+	free(buf);
+	buf = get_next_line(-1);
+	return (EXIT_FAILURE);
+}
+
 int	input_move(t_list **head)
 {
 	char	*buf;
@@ -51,22 +61,10 @@ int	input_move(t_list **head)
 		if (!buf)
 			return (EXIT_SUCCESS);
 		if (!move_value(buf))
-		{
-			printf("Error\n");
-			ft_lstclear(head);
-			free(buf);
-			buf = get_next_line(-1);
-			return (EXIT_FAILURE);
-		}
+			return (input_error(buf, head));
 		new = ft_lstnew(move_value(buf));
 		if (!new)
-		{
-			printf("Error\n");
-			ft_lstclear(head);
-			free(buf);
-			buf = get_next_line(-1);
-			return (EXIT_FAILURE);
-		}
+			return (input_error(buf, head));
 		ft_lstadd_back(head, new);
 		free(buf);
 	}
