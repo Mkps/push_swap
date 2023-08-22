@@ -3,52 +3,51 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alx <alx@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: aloubier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 07:03:10 by alx               #+#    #+#             */
-/*   Updated: 2023/07/25 07:09:34 by alx              ###   ########.fr       */
+/*   Updated: 2023/08/22 15:44:13 by aloubier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_push_swap.h"
 #include "get_next_line.h"
 
-void	move_extend(int i, char ***buf, t_list ***stack_a, t_list **stack_b)
+void	move_extend(int value, t_list **stack_a, t_list **stack_b)
 {
-	if (ft_strcmp(*buf[i], "rra\n") == 0)
-		rrotate_single(*stack_a, 'o');
-	if (ft_strcmp(*buf[i], "rrb\n") == 0)
-		rrotate_single(*stack_b, 'o');
-	if (ft_strcmp(*buf[i], "rrr\n") == 0)
-		rrotate_both(*stack_a, *stack_b, 'o');
-	if (ft_strcmp(*buf[i], "sa\n") == 0)
-		swap_single(*stack_a, 'o');
-	if (ft_strcmp(*buf[i], "sb\n") == 0)
-		swap_single(*stack_b, 'o');
-	if (ft_strcmp(*buf[i], "ss\n") == 0)
-		swap_both(*stack_a, *stack_b, 'o');
+	if (value == RRA_VALUE)
+		rrotate_single(stack_a, 'o');
+	if (value == RRB_VALUE)
+		rrotate_single(stack_b, 'o');
+	if (value == RRR_VALUE)
+		rrotate_both(stack_a, stack_b, 'o');
+	if (value == SA_VALUE)
+		swap_single(stack_a, 'o');
+	if (value == SB_VALUE)
+		swap_single(stack_b, 'o');
+	if (value == SS_VALUE)
+		swap_both(stack_a, stack_b, 'o');
 }
 
-void	exec_move(char ***buf, t_list ***stack_a, t_list ***stack_b)
+void	exec_move(t_list **head, t_list **stack_a, t_list **stack_b)
 {
-	int	i;
-
-	i = 0;
-	while (*buf[i])
+	t_list	*current;
+	
+	current = *head;
+	while (current)
 	{
-		if (ft_strcmp(*buf[i], "pa\n") == 0)
-			push(*stack_a, *stack_b, 'o');
-		if (ft_strcmp(*buf[i], "pb\n") == 0)
-			push(*stack_b, *stack_a, 'o');
-		if (ft_strcmp(*buf[i], "ra\n") == 0)
-			rotate_single(*stack_a, 'o');
-		if (ft_strcmp(*buf[i], "rb\n") == 0)
-			rotate_single(*stack_b, 'o');
-		if (ft_strcmp(*buf[i], "rr\n") == 0)
-			rotate_both(*stack_a, *stack_b, 'o');
-		move_extend(i, buf, stack_a, stack_b);
-		free(*buf[i]);
-		i++;
+		if (current->value == PA_VALUE)
+			push(stack_b, stack_a, 'o');
+		if (current->value == PB_VALUE)
+			push(stack_a, stack_b, 'o');
+		if (current->value == RA_VALUE)
+			rotate_single(stack_a, 'o');
+		if (current->value == RB_VALUE)
+			rotate_single(stack_b, 'o');
+		if (current->value == RR_VALUE)
+			rotate_both(stack_a, stack_b, 'o');
+		move_extend(current->value, stack_a, stack_b);
+		current = current->next;
 	}
 }
 
@@ -58,21 +57,30 @@ int	main(int argc, char **argv)
 	int		size;
 	t_list	**stack_a;
 	t_list	**stack_b;
-	char	**move_list;
+	t_list	**move_list;
 
 	size = elem_number(argc, argv);
-	move_list = malloc(sizeof (char *) * 100);
 	if (argc < 2)
 		return (0);
 	stack_a = create_stack(size);
+	if (!stack_a)
+		return (EXIT_FAILURE);
 	stack_b = create_stack(size);
+	if (!stack_b)
+		return (EXIT_FAILURE);
+	move_list = create_stack(1);
+	if (!move_list)
+		return (EXIT_FAILURE);
 	tab = import_args(argc, argv);
 	if (parse_error(tab))
 		return (exit_handler(argc, stack_a, stack_b, tab));
 	init_stack(stack_a, stack_b, tab);
-	input_move(&move_list);
-	exec_move(&move_list, &stack_a, &stack_b);
-	output_OK(is_sorted(stack_a) && *stack_b == NULL);
+	if (input_move(move_list) == EXIT_SUCCESS)
+	{
+		exec_move(move_list, stack_a, stack_b);
+		output_ok(is_sorted(stack_a) && *stack_b == NULL);
+	}
+	ft_lstclear(move_list);
 	free(move_list);
 	if (!exit_handler(argc, stack_a, stack_b, tab))
 		return (1);

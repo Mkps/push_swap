@@ -6,7 +6,7 @@
 /*   By: aloubier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 10:49:07 by aloubier          #+#    #+#             */
-/*   Updated: 2022/12/07 11:26:25 by aloubier         ###   ########.fr       */
+/*   Updated: 2023/08/22 15:10:01 by aloubier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,5 @@ char	*ft_strchr(const char *string, int searchedChar );
 void	ft_bzero(void *s, size_t n);
 void	*ft_calloc(size_t nmemb, size_t size);
 size_t	ft_strlen(const char *str);
-void	input_move(char ***buf);
 
 #endif

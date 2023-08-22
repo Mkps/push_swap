@@ -6,7 +6,7 @@
 /*   By: aloubier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 14:09:24 by aloubier          #+#    #+#             */
-/*   Updated: 2023/04/26 17:14:18 by aloubier         ###   ########.fr       */
+/*   Updated: 2023/08/22 15:28:07 by aloubier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,11 @@ void	rrotate_single(t_list **stack, char id)
 	t_list	*last;
 	t_list	*current;
 
+	if (!*stack)
+		return ;
 	last = ft_lstlast(*stack);
 	current = *stack;
-	if (current == last || !*stack)
+	if (current == last)
 		return ;
 	while (current->next->next)
 		current = current->next;
@@ -33,25 +35,8 @@ void	rrotate_single(t_list **stack, char id)
 
 void	rrotate_both(t_list **stack_a, t_list **stack_b, char id)
 {
-	t_list	*last;
-	t_list	*current;
-
-	last = ft_lstlast(*stack_a);
-	current = *stack_a;
-	if (current == last || !*stack_a)
-		return ;
-	while (current->next->next)
-		current = current->next;
-	ft_lstadd_front(stack_a, last);
-	current->next = NULL;
-	last = ft_lstlast(*stack_b);
-	current = *stack_b;
-	if (current == last || !*stack_b)
-		return ;
-	while (current->next->next)
-		current = current->next;
-	ft_lstadd_front(stack_b, last);
-	current->next = NULL;
+	rrotate_single(stack_a, 'o');
+	rrotate_single(stack_b, 'o');
 	if (id != 'o')
 		output_move("rrr");
 }
@@ -60,9 +45,12 @@ void	rotate_single(t_list **stack, char id)
 {
 	t_list	*current;
 
-	current = *stack;
-	if (current->next == NULL || !*stack)
+	if (!*stack)
 		return ;
+	current = *stack;
+	if (current->next == NULL)
+		return ;
+	*stack = current->next;
 	ft_lstadd_back(stack, current);
 	*stack = current->next;
 	current->next = NULL;
@@ -74,20 +62,8 @@ void	rotate_single(t_list **stack, char id)
 
 void	rotate_both(t_list **stack_a, t_list **stack_b, char id)
 {
-	t_list	*current;
-
-	current = *stack_a;
-	if (current->next == NULL || !*stack_a)
-		return ;
-	ft_lstadd_back(stack_a, current);
-	*stack_a = current->next;
-	current->next = NULL;
-	current = *stack_b;
-	if (current->next == NULL || !*stack_b)
-		return ;
-	ft_lstadd_back(stack_b, current);
-	*stack_b = current->next;
-	current->next = NULL;
+	rotate_single(stack_a, 'o');
+	rotate_single(stack_b, 'o');
 	if (id != 'o')
 		output_move("rr");
 }

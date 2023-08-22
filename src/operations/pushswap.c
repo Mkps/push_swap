@@ -6,7 +6,7 @@
 /*   By: aloubier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 13:17:00 by aloubier          #+#    #+#             */
-/*   Updated: 2023/04/26 17:12:57 by aloubier         ###   ########.fr       */
+/*   Updated: 2023/08/22 15:26:51 by aloubier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,10 @@ void	swap_single(t_list **stack, char id)
 	t_list	*next;
 	t_list	*current;
 
+	if (!*stack)
+		return ;
 	current = *stack;
-	if (current->next == NULL || !*stack)
+	if (current->next == NULL || current == NULL)
 		return ;
 	next = current->next;
 	current->next = next->next;
@@ -32,23 +34,8 @@ void	swap_single(t_list **stack, char id)
 
 void	swap_both(t_list **stack_a, t_list **stack_b, char id)
 {
-	t_list	*next;
-	t_list	*current;
-
-	current = *stack_a;
-	if (current->next == NULL || !*stack_a)
-		return ;
-	next = current->next;
-	current->next = next->next;
-	next->next = current;
-	*stack_a = next;
-	current = *stack_b;
-	if (current->next == NULL || !*stack_b)
-		return ;
-	next = current->next;
-	current->next = next->next;
-	next->next = current;
-	*stack_b = next;
+	swap_single(stack_a, 'a');
+	swap_single(stack_b, 'b');
 	if (id != 'o')
 		output_move("ss");
 }
@@ -58,6 +45,8 @@ void	push(t_list **pile_from, t_list **pile_to, char id)
 	t_list	*tmp;
 	t_list	*next;
 
+	if (!*pile_from)
+		return ;
 	tmp = *pile_from;
 	next = *pile_to;
 	if (tmp == NULL)

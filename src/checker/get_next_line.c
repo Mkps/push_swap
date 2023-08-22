@@ -6,7 +6,7 @@
 /*   By: aloubier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 10:48:55 by aloubier          #+#    #+#             */
-/*   Updated: 2023/04/21 21:17:50 by aloubier         ###   ########.fr       */
+/*   Updated: 2023/08/22 15:59:35 by aloubier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 #include <string.h>
 
 #ifndef BUFFER_SIZE
-# define BUFFER_SIZE 4096
+# define BUFFER_SIZE 100000
 #endif
 
 char	*ft_addstr(char *buffer, char *str)
@@ -38,7 +38,7 @@ char	*ft_getleftover(char *buffer)
 	i = 0;
 	while (buffer[i] && buffer[i] != '\n')
 		++i;
-	if (!buffer[i] || (buffer[i]) == '\n')
+	if (!buffer[i] || (buffer[i] == '\n' && !buffer[i + 1]))
 	{
 		free(buffer);
 		return (NULL);
@@ -114,6 +114,11 @@ char	*get_next_line(int fd)
 	static char	*buffer;
 	char		*line;
 
+	if (fd == -1 && buffer)
+	{
+		free(buffer);
+		return (NULL);
+	}
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	buffer = read_file(fd, buffer);

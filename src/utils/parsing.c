@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alx <alx@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: aloubier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 17:18:48 by aloubier          #+#    #+#             */
-/*   Updated: 2023/07/25 10:03:42 by alx              ###   ########.fr       */
+/*   Updated: 2023/08/22 14:03:50 by aloubier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,8 @@ static int	is_overflow(char *value)
 	{
 		nb *= 10;
 		nb += value[i] - '0';
+		if (nb > INT_MAX || nb < INT_MIN)
+			return (EXIT_FAILURE);
 		i++;
 	}
 	nb *= sign;
@@ -107,6 +109,8 @@ static int	parse_overflow(char **value)
 /**	Handler for the parsing functions.	**/
 int	parse_error(char **value)
 {
+	if (value[0] == 0)
+		return (1);
 	if (parse_invalid(value) == 1)
 		return (1);
 	if (parse_duplicate(value) == 1)

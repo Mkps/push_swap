@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: alx <alx@student.42.fr>                    +#+  +:+       +#+         #
+#    By: aloubier <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/24 12:58:01 by aloubier          #+#    #+#              #
-#    Updated: 2023/07/25 11:56:04 by alx              ###   ########.fr        #
+#    Updated: 2023/08/22 15:13:42 by aloubier         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ SRCDIR = ./src
 OBJ_DIR = ./build
 INCDIR = ./includes
 
-SRC =  $(SRCDIR)/sort/main.c $(SRCDIR)/sort/sort.c $(SRCDIR)/sort/sort_extend.c \
+SRC =  $(SRCDIR)/sort/sort.c $(SRCDIR)/sort/sort_extend.c \
 $(SRCDIR)/operations/pushswap.c $(SRCDIR)/operations/do_operation.c $(SRCDIR)/operations/rotate.c \
 $(SRCDIR)/utils/median.c $(SRCDIR)/utils/minmax.c \
 $(SRCDIR)/utils/parsing.c $(SRCDIR)/utils/init.c $(SRCDIR)/utils/output.c \
@@ -26,22 +26,28 @@ $(SRCDIR)/utils/libft/ft_lstclear.c $(SRCDIR)/utils/libft/ft_lstdelone.c $(SRCDI
 $(SRCDIR)/utils/libft/ft_lstsize.c $(SRCDIR)/utils/libft/ft_split.c $(SRCDIR)/utils/libft/ft_strcmp.c \
 $(SRCDIR)/utils/libft/ft_lstnew.c $(SRCDIR)/utils/libft/ft_abs.c
 
-BNS_SRC = $(SRCDIR)/checker/main.c
+MAIN_SRC = $(SRCDIR)/sort/main.c
+
+BNS_SRC = $(SRCDIR)/checker/main.c $(SRCDIR)/checker/checker.c $(SRCDIR)/checker/get_next_line.c $(SRCDIR)/checker/get_next_line_utils.c
 
 OBJ = $(SRC:$(SRCDIR)/%.c=$(OBJ_DIR)/%.o)
 
-OBJ_BONUS = $(SRC_BONUS:$(SRCDIR)/%.c=$(OBJ_DIR)/%.o)
+OBJ_MAIN = $(MAIN_SRC:$(SRCDIR)/%.c=$(OBJ_DIR)/%.o)
 
-CC = gcc
+OBJ_BONUS = $(BNS_SRC:$(SRCDIR)/%.c=$(OBJ_DIR)/%.o)
+
+CC = cc
 
 CFLAGS = -Wall -Wextra -Werror -I$(INCDIR)
 
 all: $(NAME)
 
-$(NAME): $(OBJ) 
+$(NAME): $(OBJ) $(OBJ_MAIN)
 	make all -C libft
-	$(CC) -o $(NAME) $(OBJ) libft/libft.a
+	$(CC) -o $(NAME) $(OBJ) $(OBJ_MAIN) libft/libft.a
 	
+bonus: $(BONUS)
+
 $(BONUS): $(OBJ) $(OBJ_BONUS)
 	make all -C libft
 	$(CC) -o $(BONUS) $(OBJ) $(OBJ_BONUS) libft/libft.a

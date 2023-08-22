@@ -3,66 +3,72 @@
 /*                                                        :::      ::::::::   */
 /*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alx <alx@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: aloubier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 07:05:56 by alx               #+#    #+#             */
-/*   Updated: 2023/07/25 07:05:58 by alx              ###   ########.fr       */
+/*   Updated: 2023/08/22 15:59:12 by aloubier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-int	is_valid_move(char *str)
+int	move_value(char *str)
 {
 	if (ft_strcmp(str, "pa\n") == 0)
-		return (1);
+		return (PA_VALUE);
 	if (ft_strcmp(str, "pb\n") == 0)
-		return (1);
+		return (PB_VALUE);
 	if (ft_strcmp(str, "ra\n") == 0)
-		return (1);
+		return (RA_VALUE);
 	if (ft_strcmp(str, "rb\n") == 0)
-		return (1);
+		return (RB_VALUE);
 	if (ft_strcmp(str, "rr\n") == 0)
-		return (1);
+		return (RR_VALUE);
 	if (ft_strcmp(str, "rra\n") == 0)
-		return (1);
+		return (RRA_VALUE);
 	if (ft_strcmp(str, "rrb\n") == 0)
-		return (1);
+		return (RRB_VALUE);
 	if (ft_strcmp(str, "rrr\n") == 0)
-		return (1);
+		return (RRR_VALUE);
 	if (ft_strcmp(str, "sa\n") == 0)
-		return (1);
+		return (SA_VALUE);
 	if (ft_strcmp(str, "sb\n") == 0)
-		return (1);
+		return (SB_VALUE);
 	if (ft_strcmp(str, "ss\n") == 0)
-		return (1);
+		return (SS_VALUE);
 	return (0);
 }
-
-void	input_move(char ***buf)
+int	input_move(t_list **head)
 {
-	int	i;	
+	char	*buf;
+	t_list	*new;
 
-	i = 0;
-	*buf[i] = get_next_line(0);
-	while (*buf[i] != 0)
+	new = *head;
+	buf = "str";
+	while (buf)
 	{
-		*buf[i] = get_next_line(0);
-		if (is_valid_move(*buf[i]) == 0)
+		buf = get_next_line(0);
+		if (!buf)
+			return (EXIT_SUCCESS);
+		if (!move_value(buf))
 		{
 			printf("Error\n");
-			free(*buf[i]);
-			*buf[i] = 0;
-			i = 0;
-			while (*buf[i] != 0)
-			{
-				free(*buf[i]);
-				i++;
-			}
-			return ;
+			ft_lstclear(head);
+			free(buf);
+			buf = get_next_line(-1);
+			return (EXIT_FAILURE);
 		}
-		i++;
-		*buf[i] = get_next_line(0);
+		new = ft_lstnew(move_value(buf));
+		if (!new)
+		{
+			printf("Error\n");
+			ft_lstclear(head);
+			free(buf);
+			buf = get_next_line(-1);
+			return (EXIT_FAILURE);
+		}
+		ft_lstadd_back(head, new);
+		free(buf);
 	}
-	return ;
+	return (EXIT_SUCCESS);
 }

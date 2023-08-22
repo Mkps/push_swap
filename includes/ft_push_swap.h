@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_push_swap.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alx <alx@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: aloubier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 13:08:27 by aloubier          #+#    #+#             */
-/*   Updated: 2023/07/25 11:40:37 by alx              ###   ########.fr       */
+/*   Updated: 2023/08/22 15:43:06 by aloubier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,17 @@
 # include "../libft/libft.h"
 
 typedef struct s_list	t_list;
+# define PA_VALUE	1
+# define PB_VALUE	2
+# define RA_VALUE	3
+# define RB_VALUE	4
+# define RR_VALUE	5
+# define RRA_VALUE	6
+# define RRB_VALUE	7
+# define RRR_VALUE	8
+# define SA_VALUE	9
+# define SB_VALUE	10
+# define SS_VALUE	11
 
 struct s_list
 {
@@ -40,6 +51,7 @@ void	ft_lstadd_front(t_list **lst, t_list *node);
 void	ft_lstadd_back(t_list **lst, t_list *node);
 t_list	*ft_lstnew(int value);
 int		ft_atoi(const char *str);
+
 /**		Operations	**/
 void	swap_single(t_list **stack, char id);	
 void	swap_both(t_list **stack_a, t_list **stack_b, char id);
@@ -48,6 +60,7 @@ void	rotate_single(t_list **stack, char id);
 void	rotate_both(t_list **stack_a, t_list **stack_b, char id);
 void	rrotate_single(t_list **stack, char id);
 void	rrotate_both(t_list **stack_a, t_list **stack_b, char id);
+
 /**		Utils	**/
 int		elem_number(int argc, char **argv);
 size_t	ft_abs(int number);
@@ -67,18 +80,21 @@ int		cost_compute_a(t_list **stack, int value, char mode);
 int		cost_compute(t_list **stack, int target);
 int		double_rotation_evaluation(t_list **stack_a, t_list **stack_b);
 char	*get_next_line(int fd);
+
 /**		Sorting	functions	**/
 void	sort_main(t_list **stack_a, t_list **stack_b);
 void	divide_stack(t_list **stack_a, t_list **stack_b);
 void	sort_three(t_list **stack_a, t_list **stack_b);
 void	basic_stack_sort(t_list **stack, char id);
 void	basic_stack_sort_d(t_list **stack_a, t_list **stack_b);
-/**		Display **/
+
+/**		Display		 **/
 void	output_move(char *mv);
 void	output_error(void);
 void	output_stack(t_list **stack);
-void	output_OK(int OK);
-/**		extending functions */
+void	output_ok(int OK);
+
+/**		Extending functions 	**/
 void	rot_divide(t_list **stack_a, t_list **stack_b);
 void	ext_stack_sort(t_list **stack, char id, int i, int size);
 void	ext_sort_three(t_list **stack, int c, int n, int l);
@@ -86,5 +102,8 @@ void	do_s_rotate(t_list **stack, char id, int *cost);
 void	do_s_rrotate(t_list **stack, char id, int *cost);
 void	do_d_rotate(t_list **s_a, t_list **s_b, int *c_a, int *c_b);
 void	do_d_rrotate(t_list **s_a, t_list **s_b, int *c_a, int *c_b);
+
+/**		BONUS		**/
+int		input_move(t_list **head);
 
 #endif
