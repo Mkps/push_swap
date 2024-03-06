@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_push_swap.h"
+#include "../../includes/ft_push_swap.h"
 #include "get_next_line.h"
 
 void	move_extend(int value, t_list **stack_a, t_list **stack_b)
@@ -51,22 +51,22 @@ void	exec_move(t_list **head, t_list **stack_a, t_list **stack_b)
 	}
 }
 
-int	init_stacks(t_list **move_list, t_list **stack_a, t_list **stack_b)
+int	init_stacks(t_list ***move_list, t_list ***stack_a, t_list ***stack_b)
 {
-	stack_a = create_stack(1);
-	if (!stack_a)
+	*stack_a = create_stack(1);
+	if (!*stack_a)
 		return (EXIT_FAILURE);
-	stack_b = create_stack(1);
-	if (!stack_b)
+	*stack_b = create_stack(1);
+	if (!*stack_b)
 	{
-		free(stack_a);
+		free(*stack_a);
 		return (EXIT_FAILURE);
 	}
-	move_list = create_stack(1);
-	if (!move_list)
+	*move_list = create_stack(1);
+	if (!*move_list)
 	{
-		free(stack_a);
-		free(stack_a);
+		free(*stack_a);
+		free(*stack_b);
 		return (EXIT_FAILURE);
 	}
 	return (EXIT_SUCCESS);
@@ -75,19 +75,18 @@ int	init_stacks(t_list **move_list, t_list **stack_a, t_list **stack_b)
 int	main(int argc, char **argv)
 {
 	char	**tab;
-	int		size;
 	t_list	**stack_a;
 	t_list	**stack_b;
 	t_list	**move_list;
 
-	size = elem_number(argc, argv);
 	if (argc < 2)
 		return (0);
-	if (init_stacks == EXIT_FAILURE)
+	move_list = NULL;
+	if (init_stacks(&move_list, &stack_a, &stack_b) == EXIT_FAILURE)
 		return (EXIT_FAILURE);
 	tab = import_args(argc, argv);
-	if (parse_error(tab))
-		return (exit_handler(argc, stack_a, stack_b, tab));
+	if (parse_error(tab, argc))
+		return (free(move_list), exit_handler(argc, stack_a, stack_b, tab));
 	init_stack(stack_a, stack_b, tab);
 	if (input_move(move_list) == EXIT_SUCCESS)
 	{

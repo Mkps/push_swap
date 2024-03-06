@@ -64,7 +64,7 @@ void	rrotate_both(t_list **stack_a, t_list **stack_b, char id);
 /**		Utils	**/
 int		elem_number(int argc, char **argv);
 size_t	ft_abs(int number);
-int		parse_error(char **value);
+int		parse_error(char **value, int argc);
 char	**import_args(int size, char **argv);
 t_list	**create_stack(int size); 
 int		init_stack(t_list **stack_a, t_list **stack_b, char	**tab);

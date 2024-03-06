@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../../includes/ft_push_swap.h"
 #include "get_next_line.h"
 
 int	move_value(char *str)

@@ -61,8 +61,8 @@ void	ext_cost_compute(int *c_a, int *c_b, t_list **s_a, t_list **s_b)
 		tmp_b = cost_compute(s_b, node_b->value);
 		target = find_target_value(s_a, node_b->value);
 		tmp_a = cost_compute(s_a, target);
-		if (ft_abs(tmp_a) + ft_abs(tmp_b) < ft_abs(*c_a) + ft_abs(*c_b) 
-			|| (ft_abs(tmp_a) + ft_abs(tmp_b) + (val - node_b->value) 
+		if (ft_abs(tmp_a) + ft_abs(tmp_b) < ft_abs(*c_a) + ft_abs(*c_b)
+			|| (ft_abs(tmp_a) + ft_abs(tmp_b) + (val - node_b->value)
 				<= ft_abs(*c_a) + ft_abs(*c_b) && node_b->value > val))
 		{
 			if (val > node_b->value)

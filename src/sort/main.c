@@ -25,7 +25,7 @@ int	main(int argc, char **argv)
 	stack_a = create_stack(size);
 	stack_b = create_stack(size);
 	tab = import_args(argc, argv);
-	if (parse_error(tab))
+	if (parse_error(tab, argc))
 		return (exit_handler(argc, stack_a, stack_b, tab));
 	init_stack(stack_a, stack_b, tab);
 	if (is_sorted(stack_a))

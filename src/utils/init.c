@@ -85,6 +85,6 @@ int	init_stack(t_list **stack_a, t_list **stack_b, char	**tab)
 		ft_lstadd_back(stack_a, new);
 		i++;
 	}
-	*stack_b = NULL;
+	(void)stack_b;
 	return (0);
 }

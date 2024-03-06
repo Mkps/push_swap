@@ -105,9 +105,14 @@ static int	parse_overflow(char **value)
 }
 
 /**	Handler for the parsing functions.	**/
-int	parse_error(char **value)
+int	parse_error(char **value, int argc)
 {
-	if (value[0] == 0)
+	int	i;
+
+	i = 0;
+	while (value[i] && value[i][0])
+		i++;
+	if (value[0] == 0 || i < argc)
 		return (output_error(), 1);
 	if (parse_invalid(value) == 1)
 		return (1);
