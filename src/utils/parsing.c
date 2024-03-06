@@ -112,7 +112,7 @@ int	parse_error(char **value, int argc)
 	i = 0;
 	while (value[i] && value[i][0])
 		i++;
-	if (value[0] == 0 || i < argc)
+	if (value[0] == 0 || i < argc - 1)
 		return (output_error(), 1);
 	if (parse_invalid(value) == 1)
 		return (1);
