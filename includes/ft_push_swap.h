@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_push_swap.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aloubier <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: aloubier <aloubier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 13:08:27 by aloubier          #+#    #+#             */
-/*   Updated: 2023/08/22 15:43:06 by aloubier         ###   ########.fr       */
+/*   Updated: 2024/03/08 11:48:54 by aloubier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ int		elem_number(int argc, char **argv);
 size_t	ft_abs(int number);
 int		parse_error(char **value, int argc);
 char	**import_args(int size, char **argv);
-t_list	**create_stack(int size); 
+t_list	**create_stack(int size);
 int		init_stack(t_list **stack_a, t_list **stack_b, char	**tab);
 int		exit_handler(int argc, t_list **stack_a, t_list **stack_b, char **tab);
 int		is_sorted(t_list **stack);
